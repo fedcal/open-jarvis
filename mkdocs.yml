@@ -262,6 +262,7 @@ nav:
       - "Mobile (iOS/Android)": user-manual/install/mobile.md
       - Configurazione: user-manual/configuration.md
       - Utilizzo quotidiano: user-manual/usage.md
+      - "Voce + Testo · modalità di interazione": user-manual/interaction-modes.md
       - Risoluzione problemi: user-manual/troubleshooting.md
       - FAQ: user-manual/faq.md
   - Architettura:
