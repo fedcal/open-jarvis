@@ -29,6 +29,48 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/architecture/deep-dives/health-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/health-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/health-pipeline/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/architecture/deep-dives/identity-memory-llm/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/identity-memory-llm/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/identity-memory-llm/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/architecture/deep-dives/maker-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/maker-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/maker-pipeline/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/architecture/deep-dives/rag-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/rag-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/rag-pipeline/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/architecture/deep-dives/smarthome-protocols/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/smarthome-protocols/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/smarthome-protocols/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/architecture/deep-dives/voice-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/voice-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/voice-pipeline/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/communication/cross-device/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -48,6 +90,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/design/mobile-accessibility/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/design/mobile-accessibility/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/design/mobile-accessibility/"/>
     </url>
     <url>
         <loc>https://fedcal.github.io/open-jarvis/devices/</loc>
@@ -106,6 +155,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/getting-started/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/integrations/catalog/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/integrations/catalog/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/integrations/catalog/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/integrations/holographic/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -134,11 +190,32 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/roadmap/phases/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/roadmap/timeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/roadmap/timeline/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/roadmap/timeline/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/roadmap/vision/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/roadmap/vision/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/roadmap/vision/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/security/architecture/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/security/architecture/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/security/architecture/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/security/web-auth/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/security/web-auth/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/security/web-auth/"/>
     </url>
     <url>
         <loc>https://fedcal.github.io/open-jarvis/testing/</loc>
@@ -190,6 +267,27 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/usage/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/user-manual/install/desktop/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/install/desktop/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/install/desktop/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/user-manual/install/mobile/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/install/mobile/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/install/mobile/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/user-manual/install/server/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/install/server/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/install/server/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/en/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -218,6 +316,48 @@
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/health-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/health-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/health-pipeline/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/identity-memory-llm/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/identity-memory-llm/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/identity-memory-llm/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/maker-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/maker-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/maker-pipeline/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/rag-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/rag-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/rag-pipeline/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/smarthome-protocols/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/smarthome-protocols/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/smarthome-protocols/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/voice-pipeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/architecture/deep-dives/voice-pipeline/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/architecture/deep-dives/voice-pipeline/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/en/communication/cross-device/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -237,6 +377,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/"/>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/design/mobile-accessibility/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/design/mobile-accessibility/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/design/mobile-accessibility/"/>
     </url>
     <url>
         <loc>https://fedcal.github.io/open-jarvis/en/devices/</loc>
@@ -295,6 +442,13 @@
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/getting-started/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/integrations/catalog/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/integrations/catalog/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/integrations/catalog/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/en/integrations/holographic/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -323,11 +477,32 @@
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/roadmap/phases/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/roadmap/timeline/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/roadmap/timeline/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/roadmap/timeline/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/en/roadmap/vision/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/roadmap/vision/"/>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/roadmap/vision/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/security/architecture/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/security/architecture/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/security/architecture/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/security/web-auth/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/security/web-auth/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/security/web-auth/"/>
     </url>
     <url>
         <loc>https://fedcal.github.io/open-jarvis/en/testing/</loc>
@@ -377,5 +552,26 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/usage/"/>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/usage/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/user-manual/install/desktop/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/install/desktop/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/install/desktop/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/user-manual/install/mobile/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/install/mobile/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/install/mobile/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/user-manual/install/server/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/user-manual/install/server/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/user-manual/install/server/"/>
     </url>
 </urlset>
