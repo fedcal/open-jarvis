@@ -302,6 +302,14 @@ nav:
       - "Timeline & milestone": roadmap/timeline.md
       - Fasi di sviluppo: roadmap/phases.md
       - Vision & funzionalità future: roadmap/vision.md
+  - "Casi d'uso":
+      - use-cases/index.md
+  - Enterprise:
+      - "Architettura enterprise": enterprise/architecture.md
+  - Legale:
+      - "Licenza AGPL-3.0 · perché": legal/license-rationale.md
+      - "Public customizations": legal/public-customizations.md
+      - "Public Users Registry": legal/users-registry.md
   - Contribuire:
       - contributing/index.md
       - "Branching strategy & deploy": contributing/branching-strategy.md

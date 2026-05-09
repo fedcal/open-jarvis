@@ -7,7 +7,7 @@
 
 [![CI](https://github.com/fedcal/open-jarvis/actions/workflows/ci.yml/badge.svg)](https://github.com/fedcal/open-jarvis/actions/workflows/ci.yml)
 [![Deploy Docs](https://github.com/fedcal/open-jarvis/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/fedcal/open-jarvis/actions/workflows/deploy-docs.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](./LICENSE)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Type checked: mypy](https://img.shields.io/badge/type%20checked-mypy-2A6DB2.svg)](http://mypy-lang.org/)
@@ -15,7 +15,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 [![GitHub Stars](https://img.shields.io/github/stars/fedcal/open-jarvis?style=social)](https://github.com/fedcal/open-jarvis/stargazers)
 
-[🇮🇹 Italiano](#-italiano) · [🇬🇧 English](#-english) · [📚 Docs](https://fedcal.github.io/open-jarvis/) · [📊 Status](https://fedcal.github.io/open-jarvis/status/) · [🤝 Contributing](./CONTRIBUTING.md) · [🛡️ Security](./SECURITY.md)
+[🇮🇹 Italiano](#-italiano) · [🇬🇧 English](#-english) · [📚 Docs](https://fedcal.github.io/open-jarvis/) · [📊 Status](https://fedcal.github.io/open-jarvis/status/) · [🤝 Contributing](./CONTRIBUTING.md) · [🛡️ Security](./SECURITY.md) · [👥 Users](./USERS.md)
 
 </div>
 
@@ -151,8 +151,11 @@ jarvis/
 
 ## 📜 License / Licenza
 
-This project is released under the **MIT License** — see [LICENSE](./LICENSE).
-Questo progetto è rilasciato con licenza **MIT** — vedi [LICENSE](./LICENSE).
+This project is released under **GNU AGPL-3.0** — see [LICENSE](./LICENSE).
+Questo progetto è rilasciato sotto **GNU AGPL-3.0** — vedi [LICENSE](./LICENSE).
+
+> 🆓 **Always free, always open source.** AGPL guarantees that any modification — even when offered as a network service — must be published. Read the [License rationale](./docs/it/legal/license-rationale.md) and the [Public users registry](./USERS.md).
+> 🆓 **Sempre libero, sempre open source.** AGPL garantisce che ogni modifica — anche se offerta come servizio in rete — debba essere pubblicata. Leggi la [Licence rationale](./docs/it/legal/license-rationale.md) e il [Registro pubblico utenti](./USERS.md).
 
 ---
 
