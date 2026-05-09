@@ -1,10 +1,12 @@
 ---
-title: "rag-pipeline (English translation in progress)"
-description: "This page is being translated. The Italian version is the source of truth for now."
+title: "Rag Pipeline (English translation in progress)"
+description: "This page is being translated. See the official Italian source."
 ---
 
 # Translation in progress
 
-This page is being translated to English. Until then, please refer to the [Italian version](architecture/deep-dives/rag-pipeline.md).
+This page is being translated to English. The Italian version is fully up-to-date and remains the source of truth.
 
-The Italian source is fully up-to-date. We welcome translation contributions — see [Contributing](../contributing/index.md).
+➡️ **[Read the official Italian docs](https://fedcal.github.io/open-jarvis/architecture/deep-dives/rag-pipeline/)**
+
+We welcome translation contributions — see [Contributing](https://github.com/fedcal/open-jarvis/blob/main/CONTRIBUTING.md).
