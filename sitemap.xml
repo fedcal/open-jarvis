@@ -92,6 +92,41 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/contributing/branching-strategy/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/branching-strategy/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/branching-strategy/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/contributing/code-review/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/code-review/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/code-review/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/contributing/governance/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/governance/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/governance/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/contributing/quality-standards/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/quality-standards/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/quality-standards/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/contributing/release-cycle/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/release-cycle/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/release-cycle/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/design/mobile-accessibility/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -377,6 +412,41 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/"/>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/contributing/branching-strategy/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/branching-strategy/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/branching-strategy/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/contributing/code-review/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/code-review/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/code-review/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/contributing/governance/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/governance/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/governance/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/contributing/quality-standards/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/quality-standards/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/quality-standards/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/contributing/release-cycle/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/contributing/release-cycle/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/contributing/release-cycle/"/>
     </url>
     <url>
         <loc>https://fedcal.github.io/open-jarvis/en/design/mobile-accessibility/</loc>
