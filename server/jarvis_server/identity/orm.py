@@ -182,10 +182,40 @@ class AuditEvent(Base):
     )
 
 
+class PairingCode(Base):
+    """One-time code linking a brand-new device to an existing user.
+
+    The numeric `code` (6 digits) is short enough to be typed by humans;
+    the long `token_hash` is what the QR encodes and what we actually
+    compare in constant time on redemption.
+    """
+
+    __tablename__ = "pairing_codes"
+    __table_args__ = (
+        Index("ix_pairing_user_id", "user_id"),
+        Index("ix_pairing_expires_at", "expires_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=_uuid_factory)
+    user_id: Mapped[UUID] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), index=True,
+    )
+    code: Mapped[str] = mapped_column(String(8))
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    consumed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, default=None,
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=_utcnow,
+    )
+
+
 __all__ = [
     "AuditEvent",
     "Device",
     "MfaCredential",
+    "PairingCode",
     "Session",
     "User",
 ]

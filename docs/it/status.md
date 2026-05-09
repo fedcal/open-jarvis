@@ -43,7 +43,7 @@ Viene aggiornata a **ogni commit significativo** e indica per ciascuna feature i
 | Logging strutturato (structlog) | 🔵 Next | – | JSON in prod, pretty in dev |
 | Database schema (PostgreSQL) | 🟢 Done | unit + integration | Alembic 0001 — User/Device/Session/MfaCredential/AuditEvent |
 | Identity layer (User · Device entities) | 🟢 Done | unit + integration | `jarvis_server.identity` — Argon2id + ES256 + RBAC + MFA |
-| Device pairing (QR + token) | 🔵 Next | – | M1.6 |
+| Device pairing (QR + token) | 🟢 Done | integration | M1.6 — `/api/v1/pairing/{initiate,redeem}` con codice 6-cifre + QR + token-bound JWT |
 | OAuth 2.0 / OIDC integration | ⚪ Planned | – | Authentik default |
 | JWT auth + refresh token | 🟢 Done | unit + integration | ES256 + refresh rotation con reuse-detection |
 | MFA (TOTP + email OTP + backup codes) | 🟢 Done | unit | RFC 6238, hash Argon2id at-rest |
