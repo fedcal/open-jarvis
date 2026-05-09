@@ -1,0 +1,60 @@
+name: 💡 Feature request
+description: Proponi una nuova funzionalità · Propose a new feature
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per l'idea! · Thanks for the idea!
+        Per feature complesse, considera di aprire prima una [discussion](https://github.com/fedcal/open-jarvis/discussions).
+        For complex features, please open a [discussion](https://github.com/fedcal/open-jarvis/discussions) first.
+
+  - type: input
+    id: summary
+    attributes:
+      label: "Summary · Sommario"
+      placeholder: "Add Whoop API integration for the medical agent"
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "Motivation · Motivazione"
+      description: "Why is this needed? What problem does it solve? · Perché serve? Quale problema risolve?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed solution · Soluzione proposta"
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives considered · Alternative considerate"
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: "Component · Componente"
+      multiple: true
+      options:
+        - server
+        - desktop-agent
+        - mobile-agent
+        - watch-agent
+        - browser-agent
+        - voice-agent
+        - glasses-agent
+        - vr-agent
+        - holo-agent
+        - medical-agent
+        - scraping-agent
+        - frontend
+        - infra / docker
+        - docs
+        - other

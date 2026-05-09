@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/fedcal/open-jarvis/discussions
+    about: "For questions, ideas and brainstorming · Per domande, idee e brainstorming"
+  - name: 🔐 Security report
+    url: https://github.com/fedcal/open-jarvis/blob/main/SECURITY.md
+    about: "Report a security vulnerability privately · Segnala una vulnerabilità di sicurezza in privato"

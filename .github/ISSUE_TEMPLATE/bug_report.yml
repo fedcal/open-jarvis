@@ -1,0 +1,91 @@
+name: 🐛 Bug report
+description: Segnala un bug · Report a bug
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie per la segnalazione! · Thanks for reporting!
+        Compila i campi qui sotto · Please fill in the fields below.
+
+  - type: input
+    id: summary
+    attributes:
+      label: "Summary · Sommario"
+      placeholder: "Voice agent crashes on empty audio buffer"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Steps to reproduce · Passi per riprodurre"
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behaviour · Comportamento atteso"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: "Actual behaviour · Comportamento osservato"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: "Jarvis version · Versione"
+      placeholder: "v0.1.0 / commit sha"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: "Component · Componente"
+      options:
+        - server
+        - desktop-agent
+        - mobile-agent
+        - watch-agent
+        - browser-agent
+        - voice-agent
+        - glasses-agent
+        - vr-agent
+        - holo-agent
+        - medical-agent
+        - scraping-agent
+        - frontend
+        - infra / docker
+        - docs
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Environment · Ambiente"
+      placeholder: |
+        OS: Ubuntu 24.04
+        Python: 3.12.1
+        Node: 20.10.0
+        Docker: 24.0.7
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs · Log"
+      render: shell

@@ -1,0 +1,247 @@
+site_name: "Jarvis — Personal AI Infrastructure"
+site_url: "https://fedcal.github.io/open-jarvis/"
+site_description: "Open-source, self-hosted, Iron Man-style personal AI assistant living across all your devices."
+site_author: "Federico Calò"
+repo_url: "https://github.com/fedcal/open-jarvis"
+repo_name: "fedcal/open-jarvis"
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+
+theme:
+  name: material
+  language: it
+  custom_dir: docs/overrides
+  logo: assets/images/logo.svg
+  favicon: assets/images/favicon.ico
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Passa al tema scuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Passa al tema chiaro
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.action.edit
+    - toc.follow
+
+plugins:
+  - search:
+      lang:
+        - it
+        - en
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: it
+          default: true
+          name: Italiano
+          build: true
+          site_name: "Jarvis — Personal AI Infrastructure"
+          nav_translations:
+            Home: Home
+            Getting started: Per iniziare
+            "User manual": Manuale utente
+            Installation: Installazione
+            Configuration: Configurazione
+            "Daily usage": Utilizzo quotidiano
+            Troubleshooting: Risoluzione problemi
+            FAQ: FAQ
+            Architecture: Architettura
+            Devices: Dispositivi
+            Agents: Agenti
+            Features: Funzionalità
+            Health: Salute
+            Finance: Finanza
+            News: News & briefing
+            Developer: Sviluppatore
+            RAG: Documenti & RAG
+            Maker: Maker (Blender & 3D print)
+            Communication: Comunicazione
+            "Cross-device": Cross-device
+            Protocols: Protocolli
+            Integrations: Integrazioni
+            Mobile: Mobile (iOS · Android)
+            Holographic: Ologrammi
+            "Other systems": Altri sistemi
+            Testing: Test
+            Roadmap: Roadmap
+            Vision: Vision & funzionalità future
+            Phases: Fasi di sviluppo
+            Contributing: Contribuire
+        - locale: en
+          name: English
+          build: true
+          site_name: "Jarvis — Personal AI Infrastructure"
+          nav_translations:
+            Home: Home
+            "Per iniziare": Getting started
+            "Manuale utente": User manual
+            Installazione: Installation
+            Configurazione: Configuration
+            "Utilizzo quotidiano": Daily usage
+            "Risoluzione problemi": Troubleshooting
+            FAQ: FAQ
+            Architettura: Architecture
+            Dispositivi: Devices
+            Agenti: Agents
+            Funzionalità: Features
+            Salute: Health
+            Finanza: Finance
+            "News & briefing": News
+            Sviluppatore: Developer
+            "Documenti & RAG": RAG
+            "Maker (Blender & 3D print)": Maker
+            Comunicazione: Communication
+            Cross-device: Cross-device
+            Protocolli: Protocols
+            Integrazioni: Integrations
+            "Mobile (iOS · Android)": Mobile
+            Ologrammi: Holographic
+            "Altri sistemi": Other systems
+            Test: Testing
+            Roadmap: Roadmap
+            "Vision & funzionalità future": Vision
+            "Fasi di sviluppo": Phases
+            Contribuire: Contributing
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+      fallback_to_build_date: true
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  alternate:
+    - name: Italiano
+      link: /
+      lang: it
+    - name: English
+      link: /en/
+      lang: en
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/fedcal/open-jarvis
+      name: GitHub repository
+    - icon: fontawesome/solid/globe
+      link: https://federicocalo.dev
+      name: federicocalo.dev
+  generator: false
+
+copyright: >
+  &copy; 2026 Federico Calò &mdash;
+  <a href="https://federicocalo.dev" target="_blank" rel="noopener">federicocalo.dev</a>
+  &middot; Released under the
+  <a href="https://github.com/fedcal/open-jarvis/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+
+extra_css:
+  - assets/css/custom.css
+
+nav:
+  - Home: index.md
+  - Per iniziare:
+      - getting-started/index.md
+  - Manuale utente:
+      - user-manual/index.md
+      - Installazione: user-manual/installation.md
+      - Configurazione: user-manual/configuration.md
+      - Utilizzo quotidiano: user-manual/usage.md
+      - Risoluzione problemi: user-manual/troubleshooting.md
+      - FAQ: user-manual/faq.md
+  - Architettura:
+      - architecture/index.md
+  - Dispositivi:
+      - devices/index.md
+  - Agenti:
+      - agents/index.md
+  - Funzionalità:
+      - Salute: features/health.md
+      - Finanza: features/finance.md
+      - News & briefing: features/news.md
+      - Sviluppatore: features/developer.md
+      - Documenti & RAG: features/rag.md
+      - Maker (Blender & 3D print): features/maker.md
+  - Comunicazione:
+      - Cross-device: communication/cross-device.md
+      - Protocolli: communication/protocols.md
+  - Integrazioni:
+      - Mobile (iOS · Android): integrations/mobile.md
+      - Ologrammi: integrations/holographic.md
+      - Altri sistemi: integrations/other-systems.md
+  - Test:
+      - testing/index.md
+  - Roadmap:
+      - Vision & funzionalità future: roadmap/vision.md
+      - Fasi di sviluppo: roadmap/phases.md
+  - Contribuire:
+      - contributing/index.md

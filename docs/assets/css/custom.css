@@ -1,0 +1,48 @@
+/* Jarvis — custom theme overrides */
+
+:root {
+  --md-primary-fg-color: #3f51b5;
+  --md-primary-fg-color--light: #6573c3;
+  --md-primary-fg-color--dark: #2c387e;
+  --md-accent-fg-color: #7c4dff;
+}
+
+/* Hero on homepage */
+.jarvis-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(135deg, #3f51b5 0%, #7c4dff 100%);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.jarvis-hero h1 {
+  font-size: 2.6rem;
+  margin-bottom: 0.4rem;
+  color: white !important;
+}
+
+.jarvis-hero p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Footer credits styling */
+.md-copyright__credits {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  margin-top: 0.4rem;
+}
+
+/* Code block tweaks */
+.highlight pre {
+  border-radius: 8px;
+}
+
+/* Admonitions */
+.md-typeset .admonition {
+  border-radius: 8px;
+}
