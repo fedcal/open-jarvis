@@ -257,12 +257,26 @@ nav:
   - Manuale utente:
       - user-manual/index.md
       - Installazione: user-manual/installation.md
+      - "Server VPS": user-manual/install/server.md
+      - "Desktop (Mac/Win/Linux)": user-manual/install/desktop.md
+      - "Mobile (iOS/Android)": user-manual/install/mobile.md
       - Configurazione: user-manual/configuration.md
       - Utilizzo quotidiano: user-manual/usage.md
       - Risoluzione problemi: user-manual/troubleshooting.md
       - FAQ: user-manual/faq.md
   - Architettura:
       - architecture/index.md
+      - "Deep-dive · Identity + Memory + LLM": architecture/deep-dives/identity-memory-llm.md
+      - "Deep-dive · Voice pipeline": architecture/deep-dives/voice-pipeline.md
+      - "Deep-dive · Web search + RAG": architecture/deep-dives/rag-pipeline.md
+      - "Deep-dive · Health + medical": architecture/deep-dives/health-pipeline.md
+      - "Deep-dive · Maker": architecture/deep-dives/maker-pipeline.md
+      - "Deep-dive · Smart home + protocols": architecture/deep-dives/smarthome-protocols.md
+  - Sicurezza:
+      - Architettura: security/architecture.md
+      - "Web auth + 2FA": security/web-auth.md
+  - Design & UX:
+      - "Mobile-first + WCAG 2.2": design/mobile-accessibility.md
   - Dispositivi:
       - devices/index.md
   - Agenti:
@@ -281,10 +295,12 @@ nav:
       - Mobile (iOS · Android): integrations/mobile.md
       - Ologrammi: integrations/holographic.md
       - Altri sistemi: integrations/other-systems.md
+      - "Catalog completo": integrations/catalog.md
   - Test:
       - testing/index.md
   - Roadmap:
-      - Vision & funzionalità future: roadmap/vision.md
+      - "Timeline & milestone": roadmap/timeline.md
       - Fasi di sviluppo: roadmap/phases.md
+      - Vision & funzionalità future: roadmap/vision.md
   - Contribuire:
       - contributing/index.md
