@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from jarvis_server import __version__
-from jarvis_server.api.routes import health
+from jarvis_server.api.routes import chat, health
 from jarvis_server.config import get_settings
 
 if TYPE_CHECKING:
@@ -53,6 +53,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     # Routers
     app.include_router(health.router)
+    app.include_router(chat.router)
 
     return app
 
