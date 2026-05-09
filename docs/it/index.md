@@ -1,6 +1,7 @@
 ---
-title: Jarvis — Personal AI Infrastructure
-description: Un assistente AI personale, open source e self-hosted, in stile Iron Man, che vive su tutti i tuoi dispositivi.
+title: "Open-Jarvis · Assistente AI personale open source in stile Iron Man"
+description: "Open-Jarvis è un assistente AI personale open source e self-hosted, in stile J.A.R.V.I.S. di Iron Man, che vive su laptop, smartphone, smartwatch, occhiali AR, visori VR, display olografici e wearable medicali. Privacy by design, MIT, multilingue."
+keywords: "assistente AI personale, open source, self-hosted, Jarvis, Iron Man, AI privata, agenti specializzati, LangGraph, RAG personale, smart home, wearable medicali, AR VR ologrammi, multilingue"
 hide:
   - navigation
 ---
