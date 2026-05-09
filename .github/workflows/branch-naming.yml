@@ -1,0 +1,67 @@
+name: Branch naming validation
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  validate-branch-name:
+    name: Validate branch name pattern
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch name conforms to convention
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          echo "Validating branch: $BRANCH"
+
+          PROTECTED='^(main|develop|staging|test)$'
+          FEATURE='^(feat|fix|hotfix|docs|refactor|perf|test|chore|ci|style|build|release)\/[a-z0-9]+(-[a-z0-9]+)*(-#[0-9]+)?$'
+
+          if [[ "$BRANCH" =~ $PROTECTED ]] || [[ "$BRANCH" =~ $FEATURE ]]; then
+            echo "✅ Branch name '$BRANCH' is valid"
+            exit 0
+          fi
+
+          echo "::error::Branch name '$BRANCH' does not conform to the naming convention."
+          echo "::error::Expected: <type>/<scope>-<short-description>"
+          echo "::error::Allowed types: feat, fix, hotfix, docs, refactor, perf, test, chore, ci, style, build, release"
+          echo "::error::Examples:"
+          echo "::error::  feat/health-oura-integration"
+          echo "::error::  fix/voice-agent-empty-buffer"
+          echo "::error::  docs/it-architecture-rag"
+          echo "::error::Reference: docs/it/contributing/branching-strategy.md"
+          exit 1
+
+  validate-pr-title:
+    name: Validate PR title (Conventional Commits)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            hotfix
+            docs
+            refactor
+            perf
+            test
+            chore
+            ci
+            style
+            build
+            release
+          requireScope: false
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            The PR subject must start with a lowercase letter and follow Conventional Commits.
+            Examples:
+              feat(health): add Oura Ring v2 OAuth flow
+              fix(voice): handle empty audio buffer
+              docs(it): translate architecture overview

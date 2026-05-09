@@ -304,3 +304,8 @@ nav:
       - Vision & funzionalità future: roadmap/vision.md
   - Contribuire:
       - contributing/index.md
+      - "Branching strategy & deploy": contributing/branching-strategy.md
+      - "Governance": contributing/governance.md
+      - "Code review": contributing/code-review.md
+      - "Release cycle": contributing/release-cycle.md
+      - "Quality standards": contributing/quality-standards.md
