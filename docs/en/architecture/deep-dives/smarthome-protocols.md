@@ -1,10 +1,12 @@
 ---
-title: "smarthome-protocols (English translation in progress)"
-description: "This page is being translated. The Italian version is the source of truth for now."
+title: "Smarthome Protocols (English translation in progress)"
+description: "This page is being translated. See the official Italian source."
 ---
 
 # Translation in progress
 
-This page is being translated to English. Until then, please refer to the [Italian version](architecture/deep-dives/smarthome-protocols.md).
+This page is being translated to English. The Italian version is fully up-to-date and remains the source of truth.
 
-The Italian source is fully up-to-date. We welcome translation contributions — see [Contributing](../contributing/index.md).
+➡️ **[Read the official Italian docs](https://fedcal.github.io/open-jarvis/architecture/deep-dives/smarthome-protocols/)**
+
+We welcome translation contributions — see [Contributing](https://github.com/fedcal/open-jarvis/blob/main/CONTRIBUTING.md).
