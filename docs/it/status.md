@@ -41,11 +41,13 @@ Viene aggiornata a **ogni commit significativo** e indica per ciascuna feature i
 | Health endpoint REST | 🟢 Done | unit + integration | `/health` con dipendenze |
 | Configuration via Pydantic Settings | 🟢 Done | unit | env-based, type-safe |
 | Logging strutturato (structlog) | 🔵 Next | – | JSON in prod, pretty in dev |
-| Database schema (PostgreSQL) | ⚪ Planned | – | Alembic migrations |
-| Identity layer (User · Device entities) | ⚪ Planned | – | |
-| Device pairing (QR + token) | ⚪ Planned | – | |
+| Database schema (PostgreSQL) | 🟢 Done | unit + integration | Alembic 0001 — User/Device/Session/MfaCredential/AuditEvent |
+| Identity layer (User · Device entities) | 🟢 Done | unit + integration | `jarvis_server.identity` — Argon2id + ES256 + RBAC + MFA |
+| Device pairing (QR + token) | 🔵 Next | – | M1.6 |
 | OAuth 2.0 / OIDC integration | ⚪ Planned | – | Authentik default |
-| JWT auth + refresh token | ⚪ Planned | – | |
+| JWT auth + refresh token | 🟢 Done | unit + integration | ES256 + refresh rotation con reuse-detection |
+| MFA (TOTP + email OTP + backup codes) | 🟢 Done | unit | RFC 6238, hash Argon2id at-rest |
+| Auth REST endpoints | 🟢 Done | integration | `/api/v1/auth/{register,login,refresh,logout,me}` |
 | Memory layer (mem0 wrapper) | ⚪ Planned | – | |
 | Vector store integration (Qdrant) | ⚪ Planned | – | |
 | LLM router (Ollama + Anthropic + OpenAI) | ⚪ Planned | – | |

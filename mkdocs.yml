@@ -276,6 +276,7 @@ nav:
   - Sicurezza:
       - Architettura: security/architecture.md
       - "Web auth + 2FA": security/web-auth.md
+      - "Identity Layer (M1.1)": security/identity-layer.md
   - Design & UX:
       - "Mobile-first + WCAG 2.2": design/mobile-accessibility.md
   - Dispositivi:

@@ -7,8 +7,7 @@ Tables:
 - ``mfa_credentials`` — TOTP secrets, backup-code hashes, passkeys
 - ``audit_events`` — append-only audit log
 
-The models use SQLAlchemy 2 typed mappings (`Mapped`) and the modern
-``MappedAsDataclass`` style for ergonomic construction in tests.
+The models use SQLAlchemy 2 typed mappings (`Mapped`).
 """
 
 from __future__ import annotations
@@ -22,7 +21,6 @@ from sqlalchemy import (
     DateTime,
     ForeignKey,
     Index,
-    Integer,
     String,
     Text,
     UniqueConstraint,
@@ -62,17 +60,14 @@ class User(Base):
     devices: Mapped[list[Device]] = relationship(
         back_populates="user",
         cascade="all, delete-orphan",
-        default_factory=list,
     )
     sessions: Mapped[list[Session]] = relationship(
         back_populates="user",
         cascade="all, delete-orphan",
-        default_factory=list,
     )
     mfa_credentials: Mapped[list[MfaCredential]] = relationship(
         back_populates="user",
         cascade="all, delete-orphan",
-        default_factory=list,
     )
 
 
@@ -98,7 +93,7 @@ class Device(Base):
         DateTime(timezone=True), default=_utcnow,
     )
 
-    user: Mapped[User] = relationship(back_populates="devices", default=None)
+    user: Mapped[User] = relationship(back_populates="devices")
 
 
 class Session(Base):
@@ -132,7 +127,7 @@ class Session(Base):
     )
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=_utcnow)
 
-    user: Mapped[User] = relationship(back_populates="sessions", default=None)
+    user: Mapped[User] = relationship(back_populates="sessions")
 
 
 class MfaCredential(Base):
@@ -159,7 +154,7 @@ class MfaCredential(Base):
         DateTime(timezone=True), nullable=True, default=None,
     )
 
-    user: Mapped[User] = relationship(back_populates="mfa_credentials", default=None)
+    user: Mapped[User] = relationship(back_populates="mfa_credentials")
 
 
 class AuditEvent(Base):
@@ -187,7 +182,6 @@ class AuditEvent(Base):
     )
 
 
-# Reverse-side type hints used in default_factory above
 __all__ = [
     "AuditEvent",
     "Device",

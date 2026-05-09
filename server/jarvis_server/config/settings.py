@@ -79,6 +79,20 @@ class Settings(BaseSettings):
     feature_finance: bool = False
     feature_maker: bool = False
 
+    # --- Database / cache ---
+    database_url: str = "sqlite+aiosqlite:///./jarvis-dev.db"
+    redis_url: str = "redis://localhost:6379/0"
+
+    # --- Identity / JWT ---
+    # If both keys are unset, the application generates an ephemeral pair at
+    # startup. Production must mount real PEM-encoded keys from disk or Vault.
+    jwt_private_key_pem: SecretStr | None = None
+    jwt_public_key_pem: SecretStr | None = None
+    jwt_access_ttl_seconds: int = Field(default=900, ge=60, le=3600)  # 15 min
+    jwt_refresh_ttl_seconds: int = Field(default=2_592_000, ge=3_600)  # 30 days
+    mfa_challenge_ttl_seconds: int = Field(default=300, ge=60, le=600)
+    mfa_email_otp_length: int = Field(default=6, ge=4, le=10)
+
     @field_validator("allowed_origins", mode="before")
     @classmethod
     def _split_csv_origins(cls, value: object) -> object:
@@ -106,6 +120,11 @@ class Settings(BaseSettings):
             raise RuntimeError(
                 "JARVIS_SERVER_SECRET_KEY is using the default placeholder value "
                 "and the environment is set to production. Refusing to start."
+            )
+        if self.jwt_private_key_pem is None or self.jwt_public_key_pem is None:
+            raise RuntimeError(
+                "JARVIS_JWT_PRIVATE_KEY_PEM / JARVIS_JWT_PUBLIC_KEY_PEM must be "
+                "configured in production. Refusing to start."
             )
 
 

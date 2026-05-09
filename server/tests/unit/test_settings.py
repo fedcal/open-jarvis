@@ -82,8 +82,22 @@ class TestProductionSafety:
         s = Settings(
             environment=Environment.PRODUCTION,
             server_secret_key=SecretStr("a" * 64),
+            jwt_private_key_pem=SecretStr(
+                "-----BEGIN PRIVATE KEY-----\nfake\n-----END PRIVATE KEY-----\n"
+            ),
+            jwt_public_key_pem=SecretStr(
+                "-----BEGIN PUBLIC KEY-----\nfake\n-----END PUBLIC KEY-----\n"
+            ),
         )
         s.assert_production_safe()  # must not raise
+
+    def test_missing_jwt_keys_in_production_raises(self) -> None:
+        s = Settings(
+            environment=Environment.PRODUCTION,
+            server_secret_key=SecretStr("a" * 64),
+        )
+        with pytest.raises(RuntimeError, match="JWT_PRIVATE_KEY_PEM"):
+            s.assert_production_safe()
 
     def test_no_check_in_development(self) -> None:
         s = Settings(environment=Environment.DEVELOPMENT)

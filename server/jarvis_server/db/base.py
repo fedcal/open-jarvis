@@ -20,7 +20,7 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
-from sqlalchemy.orm import DeclarativeBase, MappedAsDataclass, mapped_column
+from sqlalchemy.orm import DeclarativeBase, mapped_column
 
 # --------------------------------------------------------------------- #
 # Reusable column types                                                  #
@@ -33,7 +33,7 @@ TimestampUTC = Annotated[
 ]
 
 
-class Base(MappedAsDataclass, AsyncAttrs, DeclarativeBase):
+class Base(AsyncAttrs, DeclarativeBase):
     """Declarative base shared by every ORM model in the project."""
 
 

@@ -10,8 +10,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from jarvis_server import __version__
-from jarvis_server.api.routes import chat, health
+from jarvis_server.api.routes import auth, chat, health
 from jarvis_server.config import get_settings
+from jarvis_server.db.base import init_engine
 
 if TYPE_CHECKING:
     from jarvis_server.config.settings import Settings
@@ -23,6 +24,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     settings: Settings = get_settings()
     settings.assert_production_safe()
     app.state.settings = settings
+    init_engine(settings.database_url)
     yield
 
 
@@ -53,6 +55,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     # Routers
     app.include_router(health.router)
+    app.include_router(auth.router)
     app.include_router(chat.router)
 
     return app
