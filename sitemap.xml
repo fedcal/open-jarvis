@@ -8,6 +8,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/"/>
     </url>
     <url>
+        <loc>https://fedcal.github.io/open-jarvis/status/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/status/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/status/"/>
+    </url>
+    <url>
         <loc>https://fedcal.github.io/open-jarvis/agents/</loc>
         <lastmod>2026-05-09</lastmod>
         <changefreq>daily</changefreq>
@@ -188,6 +195,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/"/>
         <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/"/>
+    </url>
+    <url>
+        <loc>https://fedcal.github.io/open-jarvis/en/status/</loc>
+        <lastmod>2026-05-09</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://fedcal.github.io/open-jarvis/en/status/"/>
+        <xhtml:link rel="alternate" hreflang="it" href="https://fedcal.github.io/open-jarvis/status/"/>
     </url>
     <url>
         <loc>https://fedcal.github.io/open-jarvis/en/agents/</loc>
