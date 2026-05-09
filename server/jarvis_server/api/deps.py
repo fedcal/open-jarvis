@@ -26,6 +26,9 @@ from jarvis_server.identity.service import (
     IdentityService,
     JwtKeys,
 )
+from jarvis_server.memory.embeddings import DeterministicEmbedder, Embedder
+from jarvis_server.memory.service import MemoryService
+from jarvis_server.memory.vectorstore import InMemoryVectorStore, VectorStore
 from jarvis_server.security.keys import generate_es256_keypair
 
 _bearer = HTTPBearer(auto_error=False)
@@ -71,6 +74,39 @@ def get_identity_service(
     config: Annotated[IdentityConfig, Depends(get_identity_config)],
 ) -> IdentityService:
     return IdentityService(session=db, keys=keys, config=config)
+
+
+# --------------------------------------------------------------------- #
+# Memory layer                                                           #
+# --------------------------------------------------------------------- #
+
+
+@lru_cache(maxsize=1)
+def _default_embedder() -> Embedder:
+    """Process-wide deterministic embedder used when no real backend is wired."""
+    return DeterministicEmbedder()
+
+
+@lru_cache(maxsize=1)
+def _default_vector_store() -> VectorStore:
+    """Process-wide in-memory vector store; swap with Qdrant in prod."""
+    return InMemoryVectorStore()
+
+
+def get_embedder() -> Embedder:
+    return _default_embedder()
+
+
+def get_vector_store() -> VectorStore:
+    return _default_vector_store()
+
+
+def get_memory_service(
+    db: Annotated[AsyncSession, Depends(get_db)],
+    embedder: Annotated[Embedder, Depends(get_embedder)],
+    store: Annotated[VectorStore, Depends(get_vector_store)],
+) -> MemoryService:
+    return MemoryService(session=db, embedder=embedder, vector_store=store)
 
 
 # --------------------------------------------------------------------- #
@@ -139,9 +175,12 @@ def require_permission(permission: Permission):
 
 __all__ = [
     "get_db",
+    "get_embedder",
     "get_identity_config",
     "get_identity_service",
     "get_jwt_keys",
+    "get_memory_service",
+    "get_vector_store",
     "require_access_token",
     "require_permission",
     "require_role",
