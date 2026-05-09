@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fedcal.github.io/open-jarvis/sitemap.xml

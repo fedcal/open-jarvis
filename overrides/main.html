@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+<!--
+  Jarvis docs · base override.
+  Adds: full SEO meta tags, Open Graph, Twitter Card, JSON-LD,
+        canonical, alternate hreflang, theme-color, mobile viewport.
+-->
+
+{% block extrahead %}
+  {# ---- Resolve dynamic values ---------------------------------------- #}
+  {% set page_title = page.meta.title if page and page.meta and page.meta.title else (page.title if page else config.site_name) %}
+  {% set page_description = page.meta.description if page and page.meta and page.meta.description else config.site_description %}
+  {% set canonical_url = page.canonical_url if page and page.canonical_url else config.site_url %}
+  {% set seo = config.extra.seo if config.extra and config.extra.seo else {} %}
+  {% set og_image = seo.image if seo.image else "https://repository-images.githubusercontent.com/1234079791/og-default.png" %}
+  {% set keywords = seo.keywords if seo.keywords else [] %}
+  {% set lang = config.theme.language %}
+
+  {# ---- Mobile / viewport (Material already sets one but reinforce) ---- #}
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6366f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0d14" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jarvis">
+  <meta name="application-name" content="Jarvis">
+
+  {# ---- Core SEO ------------------------------------------------------ #}
+  <meta name="description" content="{{ page_description }}">
+  {% if keywords %}
+  <meta name="keywords" content="{{ keywords | join(', ') }}">
+  {% endif %}
+  <meta name="author" content="{{ config.site_author }}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="googlebot" content="index, follow">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {# ---- Hreflang alternates ------------------------------------------- #}
+  {% if config.extra.alternate %}
+    {% for alt in config.extra.alternate %}
+      <link rel="alternate" hreflang="{{ alt.lang }}" href="{{ config.site_url }}{{ alt.link | trim('/') }}{% if alt.link != '/' %}/{% endif %}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ config.site_url }}">
+  {% endif %}
+
+  {# ---- Open Graph (Facebook, LinkedIn, generic) --------------------- #}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:title" content="{{ page_title }}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ og_image }}">
+  <meta property="og:image:alt" content="{{ page_title }}">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="640">
+  <meta property="og:locale" content="{% if lang == 'it' %}it_IT{% else %}en_US{% endif %}">
+  {% if config.extra.alternate %}
+    {% for alt in config.extra.alternate %}
+      {% if alt.lang != lang %}
+        <meta property="og:locale:alternate" content="{% if alt.lang == 'it' %}it_IT{% else %}en_US{% endif %}">
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {# ---- Twitter / X Card --------------------------------------------- #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page_title }}">
+  <meta name="twitter:description" content="{{ page_description }}">
+  <meta name="twitter:image" content="{{ og_image }}">
+  {% if seo.twitter %}
+  <meta name="twitter:site" content="{{ seo.twitter }}">
+  <meta name="twitter:creator" content="{{ seo.twitter }}">
+  {% endif %}
+
+  {# ---- Performance hints -------------------------------------------- #}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://github.com">
+
+  {# ---- JSON-LD structured data -------------------------------------- #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "{{ config.site_url }}#website",
+        "url": "{{ config.site_url }}",
+        "name": "{{ config.site_name }}",
+        "description": "{{ config.site_description }}",
+        "inLanguage": ["it-IT", "en-US"],
+        "publisher": { "@id": "{{ config.site_url }}#person" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{{ config.site_url }}?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "{{ config.site_url }}#software",
+        "name": "Open-Jarvis",
+        "operatingSystem": "Linux, macOS, Windows, Android, iOS",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Personal AI Assistant",
+        "url": "{{ config.repo_url }}",
+        "license": "https://opensource.org/licenses/MIT",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "{{ config.site_description }}",
+        "softwareVersion": "0.1.0",
+        "image": "{{ og_image }}",
+        "author": { "@id": "{{ config.site_url }}#person" },
+        "creator": { "@id": "{{ config.site_url }}#person" },
+        "maintainer": { "@id": "{{ config.site_url }}#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ config.site_url }}#person",
+        "name": "{{ config.site_author }}",
+        "url": "https://federicocalo.dev",
+        "sameAs": [
+          "https://github.com/fedcal",
+          "https://federicocalo.dev"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "{{ canonical_url }}#webpage",
+        "url": "{{ canonical_url }}",
+        "name": "{{ page_title }}",
+        "description": "{{ page_description }}",
+        "inLanguage": "{% if lang == 'it' %}it-IT{% else %}en-US{% endif %}",
+        "isPartOf": { "@id": "{{ config.site_url }}#website" },
+        "about": { "@id": "{{ config.site_url }}#software" }
+      }
+    ]
+  }
+  </script>
+{% endblock %}
+
+{% block announce %}
+  <a href="https://github.com/fedcal/open-jarvis" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+    🚀 <strong>Open-Jarvis</strong> · Personal AI Infrastructure · Open source &mdash; lasciaci una stella ⭐ su GitHub
+  </a>
+{% endblock %}
