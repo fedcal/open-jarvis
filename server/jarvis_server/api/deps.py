@@ -26,9 +26,13 @@ from jarvis_server.identity.service import (
     IdentityService,
     JwtKeys,
 )
+from jarvis_server.llm.adapters.echo import EchoAdapter
+from jarvis_server.llm.router import LLMRouter
 from jarvis_server.memory.embeddings import DeterministicEmbedder, Embedder
 from jarvis_server.memory.service import MemoryService
 from jarvis_server.memory.vectorstore import InMemoryVectorStore, VectorStore
+from jarvis_server.orchestration.graph import Orchestrator, StateGraph
+from jarvis_server.orchestration.tools import LLMTool, MemorySearchTool
 from jarvis_server.security.keys import generate_es256_keypair
 
 _bearer = HTTPBearer(auto_error=False)
@@ -110,6 +114,39 @@ def get_memory_service(
 
 
 # --------------------------------------------------------------------- #
+# LLM router + Orchestrator                                              #
+# --------------------------------------------------------------------- #
+
+
+@lru_cache(maxsize=1)
+def _default_llm_router() -> LLMRouter:
+    """Default router: only the local Echo adapter is wired by default.
+
+    Production deployments override `get_llm_router` with a configured
+    multi-backend router (Ollama + cloud). Tests override it via FastAPI
+    dependency injection.
+    """
+    return LLMRouter([EchoAdapter()])
+
+
+def get_llm_router() -> LLMRouter:
+    return _default_llm_router()
+
+
+def get_orchestrator(
+    memory: Annotated[MemoryService, Depends(get_memory_service)],
+    llm_router: Annotated[LLMRouter, Depends(get_llm_router)],
+) -> Orchestrator:
+    """Build a per-request orchestrator wiring memory retrieval + LLM."""
+    graph = (
+        StateGraph()
+        .add("memory", MemorySearchTool(service=memory))
+        .add("llm", LLMTool(router=llm_router))
+    )
+    return Orchestrator(graph)
+
+
+# --------------------------------------------------------------------- #
 # Authentication                                                         #
 # --------------------------------------------------------------------- #
 
@@ -179,7 +216,9 @@ __all__ = [
     "get_identity_config",
     "get_identity_service",
     "get_jwt_keys",
+    "get_llm_router",
     "get_memory_service",
+    "get_orchestrator",
     "get_vector_store",
     "require_access_token",
     "require_permission",
