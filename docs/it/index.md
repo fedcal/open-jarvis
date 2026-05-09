@@ -22,6 +22,9 @@ Un assistente AI personale, open source e self-hosted, in stile Iron Man, che vi
 
 Non è un semplice chatbot: è una **rete distribuita di agenti specializzati** che vivono su laptop, smartphone, smartwatch, occhiali smart, visori VR, sistemi olografici e wearable medicali, tutti coordinati da un'identità AI unica e privata.
 
+!!! tip "Due modalità di interazione, un'unica conversazione"
+    Puoi parlare a Jarvis con la **voce** ("Hey Jarvis") oppure scrivere **in chat testuale** (web, mobile, desktop, CLI). Le due modalità sono **completamente interscambiabili**: stessa conversazione, stessa memoria, stesso routing. Vedi [Modalità di interazione](user-manual/interaction-modes.md).
+
 ## Funzionalità chiave
 
 <div class="grid cards" markdown>

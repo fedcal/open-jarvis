@@ -1,7 +1,12 @@
 ---
-title: "public-customizations (English translation in progress)"
+title: "Public Customizations (English translation in progress)"
+description: "This page is being translated. See the official Italian source."
 ---
 
 # Translation in progress
 
-See the [Italian version](../../it/legal/public-customizations.md). The Italian source is fully up-to-date.
+This page is being translated to English. The Italian version is fully up-to-date and remains the source of truth.
+
+➡️ **[Read the official Italian docs](https://fedcal.github.io/open-jarvis/legal/public-customizations/)**
+
+We welcome translation contributions — see [Contributing](https://github.com/fedcal/open-jarvis/blob/main/CONTRIBUTING.md).
