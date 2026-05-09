@@ -82,6 +82,7 @@ plugins:
           nav_translations:
             Home: Home
             Getting started: Per iniziare
+            "Implementation status": Stato implementazione
             "User manual": Manuale utente
             Installation: Installazione
             Configuration: Configurazione
@@ -118,6 +119,7 @@ plugins:
           nav_translations:
             Home: Home
             "Per iniziare": Getting started
+            "Stato implementazione": Implementation status
             "Manuale utente": User manual
             Installazione: Installation
             Configurazione: Configuration
@@ -253,6 +255,7 @@ nav:
   - Home: index.md
   - Per iniziare:
       - getting-started/index.md
+  - Stato implementazione: status.md
   - Manuale utente:
       - user-manual/index.md
       - Installazione: user-manual/installation.md

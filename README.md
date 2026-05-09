@@ -5,12 +5,17 @@
 **An open-source, self-hosted, Iron Man-style AI assistant that lives across all your devices.**
 **Un assistente AI open-source, self-hosted, in stile Iron Man che vive su tutti i tuoi dispositivi.**
 
+[![CI](https://github.com/fedcal/open-jarvis/actions/workflows/ci.yml/badge.svg)](https://github.com/fedcal/open-jarvis/actions/workflows/ci.yml)
+[![Deploy Docs](https://github.com/fedcal/open-jarvis/actions/workflows/deploy-docs.yml/badge.svg)](https://github.com/fedcal/open-jarvis/actions/workflows/deploy-docs.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
-[![Status](https://img.shields.io/badge/status-WIP-orange.svg)]()
-[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue.svg)]()
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Type checked: mypy](https://img.shields.io/badge/type%20checked-mypy-2A6DB2.svg)](http://mypy-lang.org/)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+[![GitHub Stars](https://img.shields.io/github/stars/fedcal/open-jarvis?style=social)](https://github.com/fedcal/open-jarvis/stargazers)
 
-[🇮🇹 Italiano](#-italiano) · [🇬🇧 English](#-english) · [📚 Docs](https://federicocalo.github.io/open-jarvis/) · [🤝 Contributing](./CONTRIBUTING.md)
+[🇮🇹 Italiano](#-italiano) · [🇬🇧 English](#-english) · [📚 Docs](https://fedcal.github.io/open-jarvis/) · [📊 Status](https://fedcal.github.io/open-jarvis/status/) · [🤝 Contributing](./CONTRIBUTING.md) · [🛡️ Security](./SECURITY.md)
 
 </div>
 
@@ -63,7 +68,7 @@ cp .env.example .env
 docker compose up -d
 ```
 
-📖 La guida completa è su **[federicocalo.github.io/open-jarvis](https://federicocalo.github.io/open-jarvis/)**.
+📖 La guida completa è su **[federicocalo.github.io/open-jarvis](https://fedcal.github.io/open-jarvis/)**.
 
 ### Stato del progetto
 
@@ -118,7 +123,7 @@ cp .env.example .env
 docker compose up -d
 ```
 
-📖 Full documentation at **[federicocalo.github.io/open-jarvis](https://federicocalo.github.io/open-jarvis/)**.
+📖 Full documentation at **[federicocalo.github.io/open-jarvis](https://fedcal.github.io/open-jarvis/)**.
 
 ### Project status
 

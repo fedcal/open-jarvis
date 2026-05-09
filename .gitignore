@@ -88,9 +88,9 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Virtualenv
-.venv/
-venv/
+# Virtualenv (any name starting with venv or .venv)
+.venv*/
+venv*/
 ENV/
 env/
 .python-version

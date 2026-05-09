@@ -1,0 +1,74 @@
+version: 2
+updates:
+  # Python — server
+  - package-ecosystem: pip
+    directory: "/server"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: "Europe/Rome"
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+      - python
+    reviewers:
+      - fedcal
+    commit-message:
+      prefix: "chore(deps)"
+      include: scope
+    groups:
+      python-minor-and-patch:
+        patterns: ["*"]
+        update-types:
+          - minor
+          - patch
+
+  # Python — docs
+  - package-ecosystem: pip
+    directory: "/docs"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: "Europe/Rome"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - documentation
+    reviewers:
+      - fedcal
+    commit-message:
+      prefix: "chore(docs-deps)"
+
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: "Europe/Rome"
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - github-actions
+    reviewers:
+      - fedcal
+    commit-message:
+      prefix: "ci(deps)"
+
+  # Docker
+  - package-ecosystem: docker
+    directory: "/server"
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: "Europe/Rome"
+    open-pull-requests-limit: 3
+    labels:
+      - dependencies
+      - docker
+    reviewers:
+      - fedcal
+    commit-message:
+      prefix: "chore(docker)"

@@ -1,0 +1,126 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------- Server (Python) ----------
+  server:
+    name: Server · lint + type + test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: server
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.13"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: server/pyproject.toml
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Ruff lint
+        run: ruff check .
+
+      - name: Ruff format check
+        run: ruff format --check .
+
+      - name: Mypy type check
+        run: mypy jarvis_server
+
+      - name: Pytest with coverage
+        run: pytest --cov-report=xml --cov-report=term
+
+      - name: Upload coverage XML
+        if: matrix.python == '3.12'
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-server
+          path: server/coverage.xml
+          retention-days: 7
+
+  # ---------- Secret scanning ----------
+  gitleaks:
+    name: Secret scanning
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ---------- Python security audit ----------
+  pip-audit:
+    name: Python dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pip-audit
+        run: pip install pip-audit
+      - name: Audit installed dependencies
+        run: pip-audit --strict --desc
+
+  # ---------- Docs build (smoke test) ----------
+  docs:
+    name: Docs · build smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: docs/requirements.txt
+      - run: pip install -r docs/requirements.txt
+      - run: mkdocs build --strict
+
+  # ---------- Aggregate gate ----------
+  ci-success:
+    name: CI success
+    needs: [server, gitleaks, pip-audit, docs]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "All checks passed"

@@ -66,10 +66,39 @@ services:
     profiles:
       - local-llm
 
-  # The `server` and `frontend` services will be added once the
-  # corresponding Dockerfiles land.
-  # I servizi `server` e `frontend` saranno aggiunti quando
-  # i Dockerfile relativi saranno disponibili.
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: jarvis-server:dev
+    container_name: jarvis-server
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    environment:
+      JARVIS_ENVIRONMENT: ${JARVIS_ENVIRONMENT:-development}
+      JARVIS_LOG_LEVEL: ${JARVIS_LOG_LEVEL:-info}
+      JARVIS_SERVER_HOST: 0.0.0.0
+      JARVIS_SERVER_PORT: 8080
+      JARVIS_SERVER_SECRET_KEY: ${SERVER_SECRET_KEY:-change-me-in-production-please-rotate-this-value}
+      JARVIS_PUBLIC_URL: ${JARVIS_PUBLIC_URL:-http://localhost:8080}
+      JARVIS_ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3000,http://localhost:8080}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-jarvis}:${POSTGRES_PASSWORD:-jarvis}@postgres:5432/${POSTGRES_DB:-jarvis}
+      REDIS_URL: redis://redis:6379/0
+      QDRANT_URL: http://qdrant:6333
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; urllib.request.urlopen('http://127.0.0.1:8080/health',timeout=3); sys.exit(0)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
 
 volumes:
   postgres_data:

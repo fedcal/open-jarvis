@@ -1,0 +1,57 @@
+# Pre-commit hooks for Open-Jarvis
+# Install:
+#   pip install pre-commit
+#   pre-commit install
+# Run on all files:
+#   pre-commit run --all-files
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=1024"]
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.4
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        files: ^server/
+      - id: ruff-format
+        files: ^server/
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.13.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - pydantic>=2.9.0
+          - pydantic-settings>=2.6.0
+          - fastapi>=0.115.0
+        args: ["--config-file=server/pyproject.toml"]
+        files: ^server/jarvis_server/
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.42.0
+    hooks:
+      - id: markdownlint
+        args: ["--disable", "MD013", "MD033", "MD041", "--"]
+        files: \.(md|MD)$
+        exclude: ^(docs/.*/index\.md|CHANGELOG\.md)$

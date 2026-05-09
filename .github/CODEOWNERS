@@ -1,0 +1,40 @@
+# CODEOWNERS — Open-Jarvis
+# Each PR touching the listed paths automatically requests a review from the
+# matching owners. Owners are required to approve before merge when branch
+# protection enables the corresponding rule.
+#
+# Syntax: <pattern> <owner1> <owner2> ...
+# https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything unless overridden below
+*                                @fedcal
+
+# Documentation
+/docs/                           @fedcal
+/mkdocs.yml                      @fedcal
+*.md                             @fedcal
+
+# Server
+/server/                         @fedcal
+/server/jarvis_server/api/       @fedcal
+/server/jarvis_server/config/    @fedcal
+
+# Agents
+/agents/                         @fedcal
+
+# Frontend
+/frontend/                       @fedcal
+
+# Infra
+/infra/                          @fedcal
+/docker-compose.yml              @fedcal
+
+# CI / GitHub
+/.github/                        @fedcal
+/.github/workflows/              @fedcal
+
+# Security-critical files always need maintainer review
+/SECURITY.md                     @fedcal
+/LICENSE                         @fedcal
+/.gitignore                      @fedcal
+/.pre-commit-config.yaml         @fedcal
