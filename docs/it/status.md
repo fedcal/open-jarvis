@@ -48,11 +48,11 @@ Viene aggiornata a **ogni commit significativo** e indica per ciascuna feature i
 | JWT auth + refresh token | 🟢 Done | unit + integration | ES256 + refresh rotation con reuse-detection |
 | MFA (TOTP + email OTP + backup codes) | 🟢 Done | unit | RFC 6238, hash Argon2id at-rest |
 | Auth REST endpoints | 🟢 Done | integration | `/api/v1/auth/{register,login,refresh,logout,me}` |
-| Memory layer (mem0 wrapper) | ⚪ Planned | – | |
-| Vector store integration (Qdrant) | ⚪ Planned | – | |
-| LLM router (Ollama + Anthropic + OpenAI) | ⚪ Planned | – | |
-| LangGraph orchestrator base | ⚪ Planned | – | |
-| Chat REST + WebSocket endpoints | ⚪ Planned | – | |
+| Memory layer (per-user, embeddings + vector store) | 🟢 Done | unit + integration | `jarvis_server.memory`, REST `/api/v1/memory/*` |
+| Vector store integration (in-memory + Qdrant-ready) | 🟢 Done | unit | Protocol-based, swap-able con Qdrant |
+| LLM router (Ollama + Anthropic + OpenAI + Echo) | 🟢 Done | unit (respx) | `jarvis_server.llm` con policy LOCAL_FIRST/CLOUD_FIRST |
+| Conversation orchestrator (state-graph) | 🟢 Done | unit + integration | `jarvis_server.orchestration` — graph + memory + LLM tools |
+| Chat REST + WebSocket endpoints | 🟢 Done | integration | Auth, orchestrator, SSE, WS bidi, voice/text modality |
 | Desktop agent (Tauri) | ⚪ Planned | – | |
 | Mobile agent (React Native) | ⚪ Planned | – | |
 | Web frontend (Next.js / Angular) | ⚪ Planned | – | |

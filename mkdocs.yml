@@ -267,6 +267,7 @@ nav:
       - FAQ: user-manual/faq.md
   - Architettura:
       - architecture/index.md
+      - "Runtime core (Fase 1)": architecture/core-runtime.md
       - "Deep-dive · Identity + Memory + LLM": architecture/deep-dives/identity-memory-llm.md
       - "Deep-dive · Voice pipeline": architecture/deep-dives/voice-pipeline.md
       - "Deep-dive · Web search + RAG": architecture/deep-dives/rag-pipeline.md
