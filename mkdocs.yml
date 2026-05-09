@@ -1,6 +1,6 @@
 site_name: "Jarvis — Personal AI Infrastructure"
 site_url: "https://fedcal.github.io/open-jarvis/"
-site_description: "Open-source, self-hosted, Iron Man-style personal AI assistant living across all your devices."
+site_description: "Open-source, self-hosted, Iron Man-style personal AI assistant living across all your devices — laptop, smartphone, smartwatch, AR glasses, VR, holographic displays and medical wearables. MIT licensed, privacy-first, multilingual."
 site_author: "Federico Calò"
 repo_url: "https://github.com/fedcal/open-jarvis"
 repo_name: "fedcal/open-jarvis"
@@ -12,9 +12,15 @@ theme:
   name: material
   language: it
   custom_dir: docs/overrides
-  logo: assets/images/logo.svg
-  favicon: assets/images/favicon.ico
+  icon:
+    logo: material/robot-happy
+    repo: fontawesome/brands/github
+    edit: material/pencil
   palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Tema automatico (sistema)
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: indigo
@@ -33,12 +39,16 @@ theme:
     text: Inter
     code: JetBrains Mono
   features:
+    - announce.dismiss
     - navigation.instant
+    - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+    - navigation.path
+    - navigation.indexes
     - navigation.top
     - navigation.footer
     - search.highlight
@@ -48,7 +58,9 @@ theme:
     - content.code.annotate
     - content.tabs.link
     - content.action.edit
+    - content.tooltips
     - toc.follow
+    - header.autohide
 
 plugins:
   - search:
@@ -66,6 +78,7 @@ plugins:
           name: Italiano
           build: true
           site_name: "Jarvis — Personal AI Infrastructure"
+          site_description: "Assistente AI personale open-source, self-hosted, in stile Iron Man che vive su laptop, smartphone, smartwatch, occhiali AR, VR, display olografici e wearable medicali."
           nav_translations:
             Home: Home
             Getting started: Per iniziare
@@ -101,6 +114,7 @@ plugins:
           name: English
           build: true
           site_name: "Jarvis — Personal AI Infrastructure"
+          site_description: "Open-source, self-hosted, Iron Man-style personal AI assistant living across laptops, smartphones, smartwatches, AR glasses, VR, holographic displays and medical wearables."
           nav_translations:
             Home: Home
             "Per iniziare": Getting started
@@ -142,6 +156,10 @@ plugins:
       effect: zoom
   - minify:
       minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
 
 markdown_extensions:
   - abbr
@@ -153,6 +171,8 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+      title: In questa pagina
+      permalink_title: Link permanente alla sezione
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem
@@ -177,6 +197,9 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
@@ -197,6 +220,25 @@ extra:
       link: https://federicocalo.dev
       name: federicocalo.dev
   generator: false
+  status:
+    new: Nuovo
+    deprecated: Deprecato
+  homepage: https://fedcal.github.io/open-jarvis/
+  # SEO data consumed by docs/overrides/main.html
+  seo:
+    image: https://repository-images.githubusercontent.com/1234079791/og-default.png
+    twitter: ""
+    keywords:
+      - personal AI
+      - open source AI assistant
+      - self-hosted Jarvis
+      - Iron Man assistant
+      - device mesh
+      - AR VR holographic
+      - medical wearables
+      - LangGraph agents
+      - RAG personale
+      - smart home AI
 
 copyright: >
   &copy; 2026 Federico Calò &mdash;

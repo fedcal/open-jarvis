@@ -1,48 +1,329 @@
-/* Jarvis — custom theme overrides */
+/* ==========================================================================
+   Jarvis docs · modern · mobile-first · SEO-friendly
+   ========================================================================== */
+
+/* ----- Design tokens -------------------------------------------------- */
 
 :root {
-  --md-primary-fg-color: #3f51b5;
-  --md-primary-fg-color--light: #6573c3;
-  --md-primary-fg-color--dark: #2c387e;
-  --md-accent-fg-color: #7c4dff;
+  /* Brand */
+  --jx-brand-1: #6366f1;        /* indigo-500 */
+  --jx-brand-2: #8b5cf6;        /* violet-500 */
+  --jx-brand-3: #ec4899;        /* pink-500 */
+
+  /* Override Material's primary to match brand */
+  --md-primary-fg-color: var(--jx-brand-1);
+  --md-primary-fg-color--light: #818cf8;
+  --md-primary-fg-color--dark: #4f46e5;
+  --md-accent-fg-color: var(--jx-brand-2);
+
+  /* Spacing & radii */
+  --jx-radius: 14px;
+  --jx-radius-sm: 8px;
+  --jx-radius-lg: 22px;
+  --jx-shadow-soft: 0 4px 14px rgba(15, 23, 42, .08);
+  --jx-shadow-strong: 0 10px 28px rgba(99, 102, 241, .25);
+
+  /* Typography */
+  --jx-font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 }
 
-/* Hero on homepage */
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0b0d14;
+  --md-default-bg-color--light: #11141d;
+  --md-default-bg-color--lighter: #161a26;
+  --jx-shadow-soft: 0 4px 14px rgba(0, 0, 0, .35);
+}
+
+/* ----- Smooth global polish ------------------------------------------ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Slight kerning for readability */
+.md-typeset {
+  font-feature-settings: "ss01", "cv11";
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.md-typeset h1 {
+  background: linear-gradient(135deg, var(--jx-brand-1), var(--jx-brand-2) 60%, var(--jx-brand-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ----- Hero ----------------------------------------------------------- */
+
 .jarvis-hero {
-  text-align: center;
-  padding: 3rem 1rem 2rem;
-  background: linear-gradient(135deg, #3f51b5 0%, #7c4dff 100%);
-  color: white;
-  border-radius: 12px;
-  margin-bottom: 2rem;
+  position: relative;
+  isolation: isolate;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1rem, 4vw, 2.5rem);
+  margin: 0 0 2rem;
+  border-radius: var(--jx-radius-lg);
+  background:
+    radial-gradient(80% 120% at 0% 0%, rgba(139, 92, 246, .9) 0%, rgba(99, 102, 241, .8) 35%, rgba(15, 23, 42, .9) 100%),
+    linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+  color: #fff;
+  overflow: hidden;
+  box-shadow: var(--jx-shadow-strong);
+}
+
+.jarvis-hero::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .08) 0%, transparent 35%),
+    radial-gradient(circle at 80% 60%, rgba(255, 255, 255, .06) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .jarvis-hero h1 {
-  font-size: 2.6rem;
-  margin-bottom: 0.4rem;
-  color: white !important;
+  font-size: clamp(1.9rem, 4.5vw, 3.2rem);
+  line-height: 1.1;
+  margin: 0 0 .5rem;
+  color: #fff !important;
+  background: none !important;
+  -webkit-text-fill-color: #fff;
 }
 
 .jarvis-hero p {
-  font-size: 1.1rem;
-  opacity: 0.95;
-  max-width: 720px;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.55;
   margin: 0 auto;
+  max-width: 720px;
+  opacity: .95;
 }
 
-/* Footer credits styling */
+.jarvis-hero strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ----- Cards (.grid cards) ------------------------------------------- */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  border-radius: var(--jx-radius);
+  border: 1px solid rgba(99, 102, 241, .15);
+  background: var(--md-default-bg-color--light, rgba(99, 102, 241, .02));
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-3px);
+  border-color: rgba(99, 102, 241, .4);
+  box-shadow: var(--jx-shadow-soft);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > ul > li {
+  border-color: rgba(139, 92, 246, .18);
+  background: rgba(99, 102, 241, .04);
+}
+
+/* ----- Buttons -------------------------------------------------------- */
+
+.md-typeset .md-button {
+  border-radius: 999px;
+  padding: .55em 1.4em;
+  font-weight: 500;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.md-typeset .md-button:hover {
+  transform: translateY(-1px);
+}
+
+.md-typeset .md-button--primary {
+  background: linear-gradient(135deg, var(--jx-brand-1), var(--jx-brand-2));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, .35);
+}
+
+.md-typeset .md-button--primary:hover {
+  box-shadow: 0 6px 20px rgba(99, 102, 241, .5);
+}
+
+/* ----- Code blocks --------------------------------------------------- */
+
+.md-typeset pre > code,
+.md-typeset .highlight pre {
+  border-radius: var(--jx-radius-sm);
+}
+
+.md-typeset .highlight {
+  border-radius: var(--jx-radius-sm);
+  overflow: hidden;
+}
+
+.md-typeset code {
+  font-feature-settings: "ss01", "ss02", "ss03", "ss04", "cv11";
+}
+
+/* ----- Admonitions --------------------------------------------------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--jx-radius-sm);
+  border-left-width: 4px;
+}
+
+/* ----- Tables --------------------------------------------------------- */
+
+.md-typeset table:not([class]) {
+  border-radius: var(--jx-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset table:not([class]) th {
+  background: rgba(99, 102, 241, .08);
+  font-weight: 600;
+}
+
+/* ----- Header & navigation ------------------------------------------- */
+
+.md-header {
+  backdrop-filter: saturate(1.4) blur(8px);
+  -webkit-backdrop-filter: saturate(1.4) blur(8px);
+  background: color-mix(in srgb, var(--md-primary-fg-color) 92%, transparent);
+}
+
+.md-tabs {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 95%, black);
+}
+
+/* ----- Search --------------------------------------------------------- */
+
+.md-search__form {
+  border-radius: 999px;
+}
+
+.md-search__output {
+  border-radius: var(--jx-radius);
+}
+
+/* ----- Footer / copyright ------------------------------------------- */
+
+.md-copyright {
+  text-align: center;
+}
+
+.md-copyright__text {
+  font-size: .78rem;
+}
+
 .md-copyright__credits {
-  font-size: 0.7rem;
-  opacity: 0.75;
+  font-size: .68rem;
+  opacity: .7;
   margin-top: 0.4rem;
 }
 
-/* Code block tweaks */
-.highlight pre {
-  border-radius: 8px;
+/* ----- Mobile-first refinements -------------------------------------- */
+
+/* Up to 768px */
+@media screen and (max-width: 768px) {
+  .md-typeset {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .md-typeset h1 {
+    font-size: 1.85rem;
+  }
+
+  .md-typeset h2 {
+    font-size: 1.4rem;
+  }
+
+  .md-typeset h3 {
+    font-size: 1.15rem;
+  }
+
+  .jarvis-hero {
+    border-radius: var(--jx-radius);
+    padding: 2rem 1.25rem;
+  }
+
+  .md-typeset .grid.cards > ul {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Larger tap targets */
+  .md-typeset .md-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: .65em 1.4em;
+  }
+
+  /* Tables: horizontally scrollable on small screens */
+  .md-typeset table:not([class]) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  /* Make the hero text more readable on small screens */
+  .jarvis-hero h1 {
+    font-size: 1.85rem;
+  }
+
+  .jarvis-hero p {
+    font-size: 1rem;
+  }
 }
 
-/* Admonitions */
-.md-typeset .admonition {
-  border-radius: 8px;
+/* Very small screens (≤ 380px) */
+@media screen and (max-width: 380px) {
+  .md-typeset h1 {
+    font-size: 1.6rem;
+  }
+  .jarvis-hero {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print: cleaner layout */
+@media print {
+  .jarvis-hero {
+    background: none !important;
+    color: #000 !important;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  .md-typeset h1 {
+    color: #000 !important;
+    background: none !important;
+    -webkit-text-fill-color: #000;
+  }
 }
