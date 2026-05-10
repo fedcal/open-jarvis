@@ -1,0 +1,4 @@
+packages:
+  - 'frontend/web'
+  - 'agents/desktop'
+  - 'agents/mobile'

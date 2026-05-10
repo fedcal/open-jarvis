@@ -1,0 +1,22 @@
+{
+  "name": "@open-jarvis/desktop",
+  "version": "0.1.0",
+  "description": "Open-Jarvis desktop client (Tauri 2 wrapping the Angular PWA)",
+  "license": "AGPL-3.0-or-later",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -n web,tauri \"pnpm --filter @open-jarvis/web start\" \"wait-on http://localhost:4200 && tauri dev\"",
+    "build": "pnpm --filter @open-jarvis/web build && tauri build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0",
+    "concurrently": "^9.0.0",
+    "wait-on": "^8.0.0"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.1.0",
+    "@tauri-apps/plugin-shell": "^2.0.1"
+  }
+}
