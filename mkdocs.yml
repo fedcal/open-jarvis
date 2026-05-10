@@ -260,11 +260,16 @@ nav:
       - "Server VPS": user-manual/install/server.md
       - "Desktop (Mac/Win/Linux)": user-manual/install/desktop.md
       - "Mobile (iOS/Android)": user-manual/install/mobile.md
+      - "Multi-device · tutti i dispositivi": user-manual/multi-device.md
+      - "Aggiornare Open-Jarvis": user-manual/updates.md
       - Configurazione: user-manual/configuration.md
       - Utilizzo quotidiano: user-manual/usage.md
       - "Voce + Testo · modalità di interazione": user-manual/interaction-modes.md
       - Risoluzione problemi: user-manual/troubleshooting.md
       - FAQ: user-manual/faq.md
+  - "Problemi comuni":
+      - troubleshooting/index.md
+      - "Build & Docker": troubleshooting/build-docker.md
   - Architettura:
       - architecture/index.md
       - "Runtime core (Fase 1)": architecture/core-runtime.md

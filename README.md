@@ -61,14 +61,85 @@ Non è un semplice chatbot: è una **rete distribuita di agenti specializzati** 
 
 ### Quick start
 
+#### 🖥️ Server (VPS o PC sempre acceso)
+
+Il server è il cuore del sistema: gira in Docker, espone HTTPS via Caddy ed è l'unico dispositivo che deve essere sempre online.
+
 ```bash
 git clone https://github.com/fedcal/open-jarvis.git
 cd open-jarvis
-cp .env.example .env
+cp .env.example .env       # configura dominio, JARVIS_JWT_*, password DB
 docker compose up -d
+curl https://jarvis.example.com/health   # smoke-test
 ```
 
-📖 La guida completa è su **[federicocalo.github.io/open-jarvis](https://fedcal.github.io/open-jarvis/)**.
+Registra il primo utente:
+
+```bash
+curl -X POST https://jarvis.example.com/api/v1/auth/register \
+     -H "Content-Type: application/json" \
+     -d '{"email":"tu@example.com","password":"<min-12-char>","display_name":"Tu"}'
+```
+
+📖 Guida server: **[user-manual/install/server.md](./docs/it/user-manual/install/server.md)**.
+
+#### 💻 Desktop (macOS · Windows · Linux)
+
+```bash
+brew install --cask open-jarvis              # macOS
+winget install OpenJarvis.Desktop            # Windows
+flatpak install flathub dev.openjarvis.Desktop  # Linux
+```
+
+Al primo avvio inserisci l'URL del server e il login. 📖 [Guida desktop](./docs/it/user-manual/install/desktop.md).
+
+#### 📱 Smartphone (iOS · Android) — pairing via QR
+
+Sullo smartphone **non serve** rifare il login: dal desktop primario apri *Settings → Devices → Add device* e mostra il QR. L'app mobile lo scansiona, il server emette un JWT bound al nuovo dispositivo (codice 6 cifre, single-use, TTL 5 min).
+
+- **iOS**: App Store → *Open-Jarvis*
+- **Android**: Play Store / F-Droid / `apk` da [Releases](https://github.com/fedcal/open-jarvis/releases)
+
+📖 [Guida mobile](./docs/it/user-manual/install/mobile.md) · [Pairing dettagliato](./docs/it/security/identity-layer.md).
+
+#### 🌐 Browser (PWA)
+
+Apri `https://jarvis.example.com` su qualunque browser desktop o mobile, aggiungi alla home, autenticati con email/password o passkey. La PWA usa la stessa API REST + WebSocket degli altri client.
+
+#### ⌚ Smartwatch · 👓 Occhiali AR · 🥽 VR · ✨ Olografico · ❤️ Wearable medicali
+
+In roadmap (M2-M8). Tutti i client erediteranno il pairing dal device mobile/desktop "host" già autenticato.
+
+📖 **[Multi-device · guida unificata a tutti i dispositivi](./docs/it/user-manual/multi-device.md)**
+
+### Aggiornare Open-Jarvis
+
+Il versionamento segue **SemVer** (`MAJOR.MINOR.PATCH`). Server e agent sono disaccoppiati: stesso MAJOR ⇒ compatibilità garantita.
+
+```bash
+# Server (con migrazioni DB idempotenti)
+cd /opt/open-jarvis
+git fetch --tags && git checkout vX.Y.Z
+docker compose pull
+docker compose run --rm server alembic upgrade head
+docker compose up -d
+
+# Desktop
+brew upgrade open-jarvis            # macOS
+winget upgrade OpenJarvis.Desktop   # Windows
+flatpak update dev.openjarvis.Desktop  # Linux
+
+# Mobile: App Store / Play Store / F-Droid (auto)
+# Web PWA: il service worker propone l'aggiornamento al refresh
+```
+
+📖 **[Procedura completa di aggiornamento](./docs/it/user-manual/updates.md)** — include rollback, migrazioni, checklist produzione.
+
+### Problemi comuni
+
+Se qualcosa non va, abbiamo una knowledge base dedicata:
+
+📖 **[docs/it/troubleshooting/](./docs/it/troubleshooting/index.md)** — build & Docker, server runtime, identity, memory, chat, pairing.
 
 ### Stato del progetto
 
@@ -116,14 +187,85 @@ It's not just a chatbot: it's a **distributed network of specialised agents** li
 
 ### Quick start
 
+#### 🖥️ Server (VPS or always-on PC)
+
+The server is the heart of the system: runs in Docker, exposes HTTPS via Caddy, and is the only device that must be always online.
+
 ```bash
 git clone https://github.com/fedcal/open-jarvis.git
 cd open-jarvis
-cp .env.example .env
+cp .env.example .env       # set domain, JARVIS_JWT_*, DB password
 docker compose up -d
+curl https://jarvis.example.com/health   # smoke test
 ```
 
-📖 Full documentation at **[federicocalo.github.io/open-jarvis](https://fedcal.github.io/open-jarvis/)**.
+Register the first user:
+
+```bash
+curl -X POST https://jarvis.example.com/api/v1/auth/register \
+     -H "Content-Type: application/json" \
+     -d '{"email":"you@example.com","password":"<min-12-chars>","display_name":"You"}'
+```
+
+📖 Server guide: **[user-manual/install/server.md](./docs/it/user-manual/install/server.md)**.
+
+#### 💻 Desktop (macOS · Windows · Linux)
+
+```bash
+brew install --cask open-jarvis              # macOS
+winget install OpenJarvis.Desktop            # Windows
+flatpak install flathub dev.openjarvis.Desktop  # Linux
+```
+
+On first launch enter the server URL and log in. 📖 [Desktop guide](./docs/it/user-manual/install/desktop.md).
+
+#### 📱 Smartphone (iOS · Android) — QR pairing
+
+You **don't** need to log in again on the phone: from the primary desktop open *Settings → Devices → Add device* and show the QR. The mobile app scans it, the server issues a device-bound JWT (6-digit code, single-use, 5-minute TTL).
+
+- **iOS**: App Store → *Open-Jarvis*
+- **Android**: Play Store / F-Droid / `apk` from [Releases](https://github.com/fedcal/open-jarvis/releases)
+
+📖 [Mobile guide](./docs/it/user-manual/install/mobile.md) · [Pairing details](./docs/it/security/identity-layer.md).
+
+#### 🌐 Browser (PWA)
+
+Open `https://jarvis.example.com` on any desktop or mobile browser, add it to the home screen, authenticate with email/password or passkey. The PWA uses the same REST + WebSocket API as the other clients.
+
+#### ⌚ Smartwatch · 👓 AR glasses · 🥽 VR · ✨ Holographic · ❤️ Medical wearables
+
+Roadmapped (M2-M8). All clients will inherit pairing from a mobile/desktop "host" device already authenticated.
+
+📖 **[Multi-device · unified guide for all devices](./docs/it/user-manual/multi-device.md)**
+
+### Updating Open-Jarvis
+
+Versioning follows **SemVer** (`MAJOR.MINOR.PATCH`). Server and agents are decoupled: same MAJOR ⇒ compatibility guaranteed.
+
+```bash
+# Server (with idempotent DB migrations)
+cd /opt/open-jarvis
+git fetch --tags && git checkout vX.Y.Z
+docker compose pull
+docker compose run --rm server alembic upgrade head
+docker compose up -d
+
+# Desktop
+brew upgrade open-jarvis            # macOS
+winget upgrade OpenJarvis.Desktop   # Windows
+flatpak update dev.openjarvis.Desktop  # Linux
+
+# Mobile: App Store / Play Store / F-Droid (auto)
+# Web PWA: the service worker prompts to refresh on update
+```
+
+📖 **[Full update procedure](./docs/it/user-manual/updates.md)** — includes rollback, migrations, production checklist.
+
+### Common problems
+
+If something goes wrong, we have a dedicated knowledge base:
+
+📖 **[docs/it/troubleshooting/](./docs/it/troubleshooting/index.md)** — build & Docker, server runtime, identity, memory, chat, pairing.
 
 ### Project status
 

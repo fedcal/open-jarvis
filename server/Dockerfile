@@ -15,8 +15,10 @@ RUN apt-get update \
  && apt-get install --no-install-recommends -y build-essential curl \
  && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies first to leverage layer caching
-COPY pyproject.toml ./
+# Install dependencies first to leverage layer caching.
+# README.md is required because pyproject.toml declares `readme = "README.md"`;
+# without it `pip wheel` aborts during metadata generation.
+COPY pyproject.toml README.md ./
 COPY jarvis_server ./jarvis_server
 RUN pip install --upgrade pip && \
     pip wheel --wheel-dir /wheels .
