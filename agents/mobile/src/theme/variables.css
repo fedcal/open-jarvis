@@ -1,0 +1,21 @@
+/* Open-Jarvis Ionic theme — paletta jarvis-* per coerenza con il web */
+
+:root {
+  --ion-color-primary: #1f47f4;
+  --ion-color-primary-rgb: 31, 71, 244;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #1b3ed7;
+  --ion-color-primary-tint: #3559f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #0e1547;
+    --ion-background-color-rgb: 14, 21, 71;
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255, 255, 255;
+    --ion-color-step-50: #16205a;
+    --ion-color-step-100: #1d2c70;
+  }
+}

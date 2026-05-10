@@ -1,0 +1,15 @@
+/* Mobile-only fine-tuning on top of Ionic theme */
+
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+.chat-bubble-user {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+}
+
+.chat-bubble-assistant {
+  background: var(--ion-color-light);
+  color: var(--ion-color-light-contrast);
+}

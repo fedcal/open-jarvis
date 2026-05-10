@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.angular/
+ios/App/build/
+android/app/build/
+android/.gradle/
+android/build/
+*.iml
+.idea/
+.vscode/
+out-tsc/
