@@ -278,3 +278,4 @@ playwright/.cache/
 # Local development
 .local/
 *.local
+.claude-tmp/
