@@ -91,24 +91,57 @@ curl -X POST https://jarvis.example.com/api/v1/auth/register \
 
 📖 Guide: **[Server VPS](./docs/it/user-manual/install/server.md)** · **[Locale Wi-Fi (no dominio)](./docs/it/user-manual/install/local-lan.md)**.
 
-#### 💻 Desktop (macOS · Windows · Linux)
+#### 🌐 Web (Angular 18 PWA)
 
 ```bash
-brew install --cask open-jarvis              # macOS
-winget install OpenJarvis.Desktop            # Windows
-flatpak install flathub dev.openjarvis.Desktop  # Linux
+cd frontend/web
+pnpm install
+pnpm start                       # → http://localhost:4200
 ```
 
-Al primo avvio inserisci l'URL del server e il login. 📖 [Guida desktop](./docs/it/user-manual/install/desktop.md).
+Apri il browser, inserisci come *Server URL* `http://localhost:8090` (o l'IP del tuo PC), registrati e parti.
 
-#### 📱 Smartphone (iOS · Android) — pairing via QR
+Build production:
 
-Sullo smartphone **non serve** rifare il login: dal desktop primario apri *Settings → Devices → Add device* e mostra il QR. L'app mobile lo scansiona, il server emette un JWT bound al nuovo dispositivo (codice 6 cifre, single-use, TTL 5 min).
+```bash
+pnpm build
+# dist/open-jarvis-web/browser/ → servi con Caddy / Nginx / qualsiasi static host
+```
 
-- **iOS**: App Store → *Open-Jarvis*
-- **Android**: Play Store / F-Droid / `apk` da [Releases](https://github.com/fedcal/open-jarvis/releases)
+📖 [Guida web](./frontend/web/README.md).
 
-📖 [Guida mobile](./docs/it/user-manual/install/mobile.md) · [Pairing dettagliato](./docs/it/security/identity-layer.md).
+#### 💻 Desktop (Tauri 2 — macOS · Windows · Linux)
+
+```bash
+# Installa Rust toolchain (una sola volta)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Avvio dev (apre la finestra nativa con HMR del frontend)
+pnpm install
+pnpm --filter @open-jarvis/desktop dev
+
+# Build firmabile per distribuzione
+pnpm --filter @open-jarvis/desktop build
+```
+
+Output: `.dmg`/`.app` (macOS), `.msi`/`.exe` (Windows), `.AppImage`/`.deb` (Linux).
+📖 [Guida desktop](./agents/desktop/README.md).
+
+#### 📱 Smartphone (Ionic + Angular + Capacitor)
+
+```bash
+cd agents/mobile
+pnpm install
+pnpm start                       # PWA in browser su :4300
+
+# Build native
+pnpm sync && pnpm cap add ios && pnpm ios       # apre Xcode
+pnpm sync && pnpm cap add android && pnpm android  # apre Android Studio
+```
+
+Al primo avvio sul telefono inserisci come *Server URL* l'IP del PC (`http://192.168.X.Y:8090`). Una volta avuto un client web/desktop autenticato, puoi anche fare il **pairing via QR** (codice 6 cifre, TTL 5 min) senza ridigitare le credenziali.
+
+📖 [Guida mobile](./agents/mobile/README.md) · [Pairing dettagliato](./docs/it/security/identity-layer.md).
 
 #### 🌐 Browser (PWA)
 
@@ -225,24 +258,54 @@ curl -X POST https://jarvis.example.com/api/v1/auth/register \
 
 📖 Guides: **[Server VPS](./docs/it/user-manual/install/server.md)** · **[Local Wi-Fi (no domain)](./docs/it/user-manual/install/local-lan.md)**.
 
-#### 💻 Desktop (macOS · Windows · Linux)
+#### 🌐 Web (Angular 18 PWA)
 
 ```bash
-brew install --cask open-jarvis              # macOS
-winget install OpenJarvis.Desktop            # Windows
-flatpak install flathub dev.openjarvis.Desktop  # Linux
+cd frontend/web
+pnpm install
+pnpm start                       # → http://localhost:4200
 ```
 
-On first launch enter the server URL and log in. 📖 [Desktop guide](./docs/it/user-manual/install/desktop.md).
+Open the browser, set *Server URL* to `http://localhost:8090` (or your PC's LAN IP), register and go. Production:
 
-#### 📱 Smartphone (iOS · Android) — QR pairing
+```bash
+pnpm build  # dist/open-jarvis-web/browser/ → serve with Caddy/Nginx
+```
 
-You **don't** need to log in again on the phone: from the primary desktop open *Settings → Devices → Add device* and show the QR. The mobile app scans it, the server issues a device-bound JWT (6-digit code, single-use, 5-minute TTL).
+📖 [Web guide](./frontend/web/README.md).
 
-- **iOS**: App Store → *Open-Jarvis*
-- **Android**: Play Store / F-Droid / `apk` from [Releases](https://github.com/fedcal/open-jarvis/releases)
+#### 💻 Desktop (Tauri 2 — macOS · Windows · Linux)
 
-📖 [Mobile guide](./docs/it/user-manual/install/mobile.md) · [Pairing details](./docs/it/security/identity-layer.md).
+```bash
+# Install Rust toolchain (one-off)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Dev (native window with frontend HMR)
+pnpm install
+pnpm --filter @open-jarvis/desktop dev
+
+# Signed distributable build
+pnpm --filter @open-jarvis/desktop build
+```
+
+Output: `.dmg`/`.app` (macOS), `.msi`/`.exe` (Windows), `.AppImage`/`.deb` (Linux).
+📖 [Desktop guide](./agents/desktop/README.md).
+
+#### 📱 Smartphone (Ionic + Angular + Capacitor)
+
+```bash
+cd agents/mobile
+pnpm install
+pnpm start                       # PWA in browser on :4300
+
+# Native builds
+pnpm sync && pnpm cap add ios && pnpm ios       # opens Xcode
+pnpm sync && pnpm cap add android && pnpm android  # opens Android Studio
+```
+
+On first launch on the phone, enter your PC's LAN IP as *Server URL* (`http://192.168.X.Y:8090`). Once you have a web/desktop client authenticated, you can also use **QR pairing** (6-digit code, 5-min TTL) without re-typing credentials.
+
+📖 [Mobile guide](./agents/mobile/README.md) · [Pairing details](./docs/it/security/identity-layer.md).
 
 #### 🌐 Browser (PWA)
 

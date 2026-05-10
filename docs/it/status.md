@@ -53,9 +53,10 @@ Viene aggiornata a **ogni commit significativo** e indica per ciascuna feature i
 | LLM router (Ollama + Anthropic + OpenAI + Echo) | 🟢 Done | unit (respx) | `jarvis_server.llm` con policy LOCAL_FIRST/CLOUD_FIRST |
 | Conversation orchestrator (state-graph) | 🟢 Done | unit + integration | `jarvis_server.orchestration` — graph + memory + LLM tools |
 | Chat REST + WebSocket endpoints | 🟢 Done | integration | Auth, orchestrator, SSE, WS bidi, voice/text modality |
-| Desktop agent (Tauri) | ⚪ Planned | – | |
-| Mobile agent (React Native) | ⚪ Planned | – | |
-| Web frontend (Next.js / Angular) | ⚪ Planned | – | |
+| Desktop agent (Tauri 2) | 🟡 In progress | – | Scaffold con system tray + deep linking + CSP per LAN |
+| Mobile agent (Ionic + Angular + Capacitor) | 🟡 In progress | – | Tabs chat/memory/settings, auth/chat/memory/llm services, target iOS+Android |
+| Web frontend (Angular 18 PWA) | 🟢 Done | build verificato | Standalone components, signals, Tailwind, service worker, LLM picker, Ollama integration |
+| LLM provider selector + Ollama integration | 🟢 Done | unit + integration | `/api/v1/llm/{backends,ollama/models}`, UI in web/mobile/desktop |
 | E2E test cross-device | ⚪ Planned | – | |
 
 ## Fase 2 · Voice & Watch 🎙️
