@@ -10,7 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from jarvis_server import __version__
-from jarvis_server.api.routes import auth, chat, health, memory, pairing
+from jarvis_server.api.routes import auth, chat, health, llm, memory, pairing
 from jarvis_server.config import get_settings
 from jarvis_server.db.base import init_engine
 
@@ -58,6 +58,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(auth.router)
     app.include_router(pairing.router)
     app.include_router(memory.router)
+    app.include_router(llm.router)
     app.include_router(chat.router)
 
     return app

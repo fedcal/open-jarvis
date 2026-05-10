@@ -83,6 +83,12 @@ class Settings(BaseSettings):
     database_url: str = "sqlite+aiosqlite:///./jarvis-dev.db"
     redis_url: str = "redis://localhost:6379/0"
 
+    # --- LLM providers ---
+    ollama_base_url: str = "http://127.0.0.1:11434"
+    openai_api_key: SecretStr | None = None
+    anthropic_api_key: SecretStr | None = None
+    default_llm_backend: str | None = None  # override LOCAL_FIRST policy
+
     # --- Identity / JWT ---
     # If both keys are unset, the application generates an ephemeral pair at
     # startup. Production must mount real PEM-encoded keys from disk or Vault.

@@ -26,7 +26,11 @@ from jarvis_server.identity.service import (
     IdentityService,
     JwtKeys,
 )
+from jarvis_server.llm.adapter import LLMAdapter
+from jarvis_server.llm.adapters.anthropic import AnthropicAdapter
 from jarvis_server.llm.adapters.echo import EchoAdapter
+from jarvis_server.llm.adapters.ollama import OllamaAdapter
+from jarvis_server.llm.adapters.openai import OpenAIAdapter
 from jarvis_server.llm.router import LLMRouter
 from jarvis_server.memory.embeddings import DeterministicEmbedder, Embedder
 from jarvis_server.memory.service import MemoryService
@@ -119,18 +123,42 @@ def get_memory_service(
 
 
 @lru_cache(maxsize=1)
-def _default_llm_router() -> LLMRouter:
-    """Default router: only the local Echo adapter is wired by default.
+def _default_llm_router_for(
+    ollama_base_url: str,
+    openai_api_key: str | None,
+    anthropic_api_key: str | None,
+) -> LLMRouter:
+    """Build a multi-backend router from current settings.
 
-    Production deployments override `get_llm_router` with a configured
-    multi-backend router (Ollama + cloud). Tests override it via FastAPI
-    dependency injection.
+    The lru_cache key is the tuple of inputs so the router gets rebuilt
+    when settings change between tests.
     """
-    return LLMRouter([EchoAdapter()])
+    adapters: list[LLMAdapter] = [EchoAdapter()]
+    # Ollama is added unconditionally: if the daemon isn't running the
+    # adapter just fails on first call. The /llm/ollama/models endpoint
+    # tells the UI whether it's reachable.
+    adapters.append(OllamaAdapter(base_url=ollama_base_url))
+    if openai_api_key:
+        adapters.append(OpenAIAdapter(api_key=openai_api_key))
+    if anthropic_api_key:
+        adapters.append(AnthropicAdapter(api_key=anthropic_api_key))
+    return LLMRouter(adapters)
 
 
-def get_llm_router() -> LLMRouter:
-    return _default_llm_router()
+def get_llm_router(
+    settings: Annotated[Settings, Depends(get_settings)],
+) -> LLMRouter:
+    return _default_llm_router_for(
+        ollama_base_url=settings.ollama_base_url,
+        openai_api_key=(
+            settings.openai_api_key.get_secret_value()
+            if settings.openai_api_key else None
+        ),
+        anthropic_api_key=(
+            settings.anthropic_api_key.get_secret_value()
+            if settings.anthropic_api_key else None
+        ),
+    )
 
 
 def get_orchestrator(
