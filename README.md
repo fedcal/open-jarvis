@@ -61,6 +61,14 @@ Non è un semplice chatbot: è una **rete distribuita di agenti specializzati** 
 
 ### Quick start
 
+> **Vuoi solo provarlo sul tuo PC senza dominio?** Vai dritto a
+> **[Installazione locale (PC + Wi-Fi domestico)](./docs/it/user-manual/install/local-lan.md)**:
+> tutto gira sul tuo PC, gli altri dispositivi si collegano via Wi-Fi
+> usando `jarvis.local` o l'IP della LAN.
+>
+> **Vuoi sviluppare contribuendo al progetto?** Vedi la guida
+> **[Modalità sviluppo](./docs/it/contributing/development.md)**.
+
 #### 🖥️ Server (VPS o PC sempre acceso)
 
 Il server è il cuore del sistema: gira in Docker, espone HTTPS via Caddy ed è l'unico dispositivo che deve essere sempre online.
@@ -81,7 +89,7 @@ curl -X POST https://jarvis.example.com/api/v1/auth/register \
      -d '{"email":"tu@example.com","password":"<min-12-char>","display_name":"Tu"}'
 ```
 
-📖 Guida server: **[user-manual/install/server.md](./docs/it/user-manual/install/server.md)**.
+📖 Guide: **[Server VPS](./docs/it/user-manual/install/server.md)** · **[Locale Wi-Fi (no dominio)](./docs/it/user-manual/install/local-lan.md)**.
 
 #### 💻 Desktop (macOS · Windows · Linux)
 
@@ -187,6 +195,14 @@ It's not just a chatbot: it's a **distributed network of specialised agents** li
 
 ### Quick start
 
+> **Just want to try it on your PC, no domain?** Jump to
+> **[Local install (PC + home Wi-Fi)](./docs/it/user-manual/install/local-lan.md)**:
+> everything runs on your PC, other devices connect via Wi-Fi using
+> `jarvis.local` or the LAN IP.
+>
+> **Want to develop / contribute?** See the
+> **[Development mode](./docs/it/contributing/development.md)** guide.
+
 #### 🖥️ Server (VPS or always-on PC)
 
 The server is the heart of the system: runs in Docker, exposes HTTPS via Caddy, and is the only device that must be always online.
@@ -207,7 +223,7 @@ curl -X POST https://jarvis.example.com/api/v1/auth/register \
      -d '{"email":"you@example.com","password":"<min-12-chars>","display_name":"You"}'
 ```
 
-📖 Server guide: **[user-manual/install/server.md](./docs/it/user-manual/install/server.md)**.
+📖 Guides: **[Server VPS](./docs/it/user-manual/install/server.md)** · **[Local Wi-Fi (no domain)](./docs/it/user-manual/install/local-lan.md)**.
 
 #### 💻 Desktop (macOS · Windows · Linux)
 

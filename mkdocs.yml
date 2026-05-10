@@ -257,6 +257,7 @@ nav:
   - Manuale utente:
       - user-manual/index.md
       - Installazione: user-manual/installation.md
+      - "Locale (PC + Wi-Fi, no dominio)": user-manual/install/local-lan.md
       - "Server VPS": user-manual/install/server.md
       - "Desktop (Mac/Win/Linux)": user-manual/install/desktop.md
       - "Mobile (iOS/Android)": user-manual/install/mobile.md
@@ -320,6 +321,7 @@ nav:
       - "Public Users Registry": legal/users-registry.md
   - Contribuire:
       - contributing/index.md
+      - "Modalità sviluppo": contributing/development.md
       - "Branching strategy & deploy": contributing/branching-strategy.md
       - "Governance": contributing/governance.md
       - "Code review": contributing/code-review.md

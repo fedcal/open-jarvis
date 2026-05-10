@@ -48,6 +48,12 @@ autenticarsi né recuperare la memoria.
 Il server è il cuore: gira in Docker Compose, espone HTTPS via Caddy
 con TLS automatico ed è l'unico dispositivo sempre online.
 
+!!! tip "Vuoi farlo girare interamente sul tuo PC?"
+    Se non hai un dominio e vuoi che tutto resti dentro il Wi-Fi di
+    casa (PC host + smartphone + laptop sulla stessa rete), segui
+    **[Installazione locale (PC + Wi-Fi, senza dominio)](install/local-lan.md)**.
+    Tornerai qui per il pairing degli altri dispositivi.
+
 ```bash
 git clone https://github.com/fedcal/open-jarvis.git
 cd open-jarvis
