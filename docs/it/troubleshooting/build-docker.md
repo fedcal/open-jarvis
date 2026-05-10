@@ -120,21 +120,46 @@ RUN chmod +x /app/scripts/x.sh
 **Sintomo.** `docker compose up` fallisce con
 `Bind for 0.0.0.0:8080 failed: port is already allocated`.
 
-**Causa.** Una versione precedente del server è ancora attiva (oppure
-un processo non-Docker sta ascoltando sulla stessa porta).
+**Causa.** Una versione precedente del server è ancora attiva, oppure
+un processo non-Docker sta ascoltando sulla stessa porta. Sui PC dev
+è comune avere già un Postgres locale (5432), un Redis (6379), un
+Qdrant (6333), o tool Java/IDE su 8080.
 
-**Fix.**
+**Fix.** Sovrascrivi le porte host nel `.env` (le variabili sono
+mappate dal `docker-compose.yml` con default sicuri):
 
 ```bash
-# Ferma vecchie istanze Compose
-docker compose down
-
-# Verifica chi tiene la porta
-sudo lsof -i :8080
-
-# Se è un processo a tua scelta, fermalo; altrimenti rimappa:
-JARVIS_SERVER_PORT=8081 docker compose up -d
+# .env
+JARVIS_HOST_PORT=8090         # API server
+POSTGRES_HOST_PORT=15432
+REDIS_HOST_PORT=16379
+QDRANT_HOST_PORT=16333
+QDRANT_GRPC_HOST_PORT=16334
 ```
+
+Dopo aver modificato il `.env`:
+
+```bash
+docker compose down
+docker compose up -d
+docker compose ps              # verifica le nuove mapping in colonna PORTS
+curl http://localhost:8090/health
+```
+
+Per scoprire chi tiene una porta:
+
+```bash
+ss -tlnp | grep -E '8080|5432|6379|6333'    # Linux
+lsof -iTCP -sTCP:LISTEN | grep 8080         # macOS / BSD
+Get-NetTCPConnection -State Listen -LocalPort 8080  # Windows PowerShell
+```
+
+!!! warning "Le porte interne dei container restano standard"
+    Le porte **interne** ai container (8080 per il server, 5432 per
+    Postgres, …) non cambiano mai. Solo le porte **host** lato sinistro
+    della mapping (`HOST:CONTAINER`). Quindi i parametri tipo
+    `JARVIS_DATABASE_URL` puntano a `postgres:5432` (nome servizio),
+    non `localhost:15432`.
 
 ## `no space left on device`
 

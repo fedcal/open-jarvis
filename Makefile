@@ -38,7 +38,10 @@ deps:  ## Installa dipendenze server (uv) · Install server dependencies
 	cd server && uv sync --extra dev
 
 server-dev:  ## Avvia FastAPI con hot-reload su :8080 · Run FastAPI with hot-reload
-	cd server && uv run uvicorn jarvis_server.api.main:app --reload --host 0.0.0.0 --port 8080
+	@# uvicorn --env-file loads ../.env (repo root) into the process before
+	@# the app boots, so pydantic-settings can read JARVIS_* even from server/
+	cd server && uv run uvicorn jarvis_server.api.main:app \
+	    --reload --host 0.0.0.0 --port 8080 --env-file ../.env
 
 server-test:  ## Esegui la test suite con coverage · Run tests with coverage
 	cd server && uv run -m pytest

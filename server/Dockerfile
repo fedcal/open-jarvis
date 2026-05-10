@@ -44,6 +44,10 @@ WORKDIR /app
 COPY --from=builder /wheels /wheels
 RUN pip install --no-cache-dir /wheels/*.whl && rm -rf /wheels
 
+# Alembic config + migrations are needed at runtime to apply schema upgrades
+COPY alembic.ini ./
+COPY migrations ./migrations
+
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD python -c "import urllib.request,sys; \
@@ -54,4 +58,4 @@ USER jarvis
 
 EXPOSE 8080
 
-CMD ["uvicorn", "jarvis_server.api.main:app", "--host", "0.0.0.0", "--port", "8080", "--workers", "2", "--proxy-headers"]
+CMD ["sh", "-c", "alembic upgrade head && exec uvicorn jarvis_server.api.main:app --host 0.0.0.0 --port 8080 --workers 2 --proxy-headers"]

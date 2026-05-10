@@ -271,6 +271,7 @@ nav:
   - "Problemi comuni":
       - troubleshooting/index.md
       - "Build & Docker": troubleshooting/build-docker.md
+      - "Avvio server runtime": troubleshooting/server-runtime.md
   - Architettura:
       - architecture/index.md
       - "Runtime core (Fase 1)": architecture/core-runtime.md

@@ -92,12 +92,18 @@ equivale a:
 
 ```bash
 cd server && uv run uvicorn jarvis_server.api.main:app \
-  --reload --host 0.0.0.0 --port 8080
+    --reload --host 0.0.0.0 --port 8080 --env-file ../.env
 ```
 
 Apri <http://localhost:8080/docs> per la dashboard OpenAPI Swagger.
 Modifica un file Python: uvicorn rileva la change e ricarica il
 processo in <1 s.
+
+!!! info "Perché `--env-file ../.env`"
+    Pydantic-settings cerca `.env` nella **cwd del processo**: siccome
+    `make server-dev` fa `cd server`, senza `--env-file` non troverebbe
+    il file di repo root. uvicorn lo carica in `os.environ` prima del
+    boot, quindi le `JARVIS_*` arrivano correttamente.
 
 !!! tip "Quando NON usare hot-reload"
     Test, profiling, debug step-by-step. Per quei casi avvia il server
@@ -106,21 +112,27 @@ processo in <1 s.
 
 ### Override delle dipendenze del server
 
-Per default `make server-dev` usa la **stessa configurazione del
-compose**: SQLite locale `./jarvis-dev.db`, in-memory vector store,
-`EchoAdapter` come unico backend LLM. Se vuoi forzare Postgres
-+ Qdrant + Ollama:
+Per default `make server-dev` usa **SQLite** (`./jarvis-dev.db`),
+in-memory vector store ed `EchoAdapter` come unico backend LLM. Se
+vuoi forzare Postgres + Qdrant + Ollama, modifica il `.env`:
 
 ```bash
-export JARVIS_DATABASE_URL="postgresql+asyncpg://jarvis:jarvis@localhost:5432/jarvis"
-export JARVIS_REDIS_URL="redis://localhost:6379/0"
-make server-dev
+JARVIS_DATABASE_URL=postgresql+psycopg://jarvis:jarvis@localhost:5432/jarvis
+JARVIS_REDIS_URL=redis://localhost:6379/0
 ```
 
-In alternativa, lascia che `docker compose up server` ricompili
-l'immagine; il volume non è montato in dev mode quindi serve un
-`docker compose build server` ad ogni modifica — meglio il flow
-host-side con `make server-dev`.
+!!! warning "Porte sovrascritte"
+    Se hai dovuto sovrascrivere `POSTGRES_HOST_PORT=15432` perché il
+    `5432` era occupato, ricordati di adeguare anche
+    `JARVIS_DATABASE_URL=postgresql+psycopg://...localhost:15432/jarvis`,
+    altrimenti il server-dev tenta `localhost:5432` e fallisce con
+    `connection refused`.
+
+!!! warning "JWT keypair in dev: una sola, condivisa"
+    Senza `JARVIS_JWT_*_KEY_PEM` il server genera al boot una keypair
+    ES256 ephemera. Con `--workers >1` ogni worker ne genera una
+    diversa, rompendo la verifica dei JWT (`Signature verification
+    failed`). Per questo `docker-compose.yml` usa `--workers 1` in dev.
 
 ### Profili Docker Compose
 
@@ -319,7 +331,7 @@ JARVIS_ENVIRONMENT=development
 JARVIS_LOG_LEVEL=debug                  # log verbosi
 JARVIS_DATABASE_URL=sqlite+aiosqlite:///./jarvis-dev.db
 # o per usare Postgres del compose:
-# JARVIS_DATABASE_URL=postgresql+asyncpg://jarvis:jarvis@localhost:5432/jarvis
+# JARVIS_DATABASE_URL=postgresql+psycopg://jarvis:jarvis@localhost:5432/jarvis
 
 JARVIS_JWT_PRIVATE_KEY_PEM=             # vuoto → ephemeral key auto-generata
 JARVIS_JWT_PUBLIC_KEY_PEM=

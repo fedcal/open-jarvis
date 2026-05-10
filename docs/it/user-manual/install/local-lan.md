@@ -108,21 +108,46 @@ cd open-jarvis
 cp .env.example .env
 ```
 
-Apri `.env` e modifica solo queste 3 chiavi:
+Apri `.env` e modifica queste chiavi (tutte iniziano con `JARVIS_`,
+così Pydantic Settings le legge automaticamente):
 
 ```bash
 JARVIS_DOMAIN=jarvis.local
 JARVIS_PUBLIC_URL=http://192.168.1.42:8080
-ALLOWED_ORIGINS=http://192.168.1.42:8080,http://192.168.1.42:3000,http://jarvis.local:8080,http://jarvis.local:3000
+JARVIS_ALLOWED_ORIGINS=http://192.168.1.42:8080,http://192.168.1.42:3000,http://jarvis.local:8080,http://jarvis.local:3000
 ```
 
 Sostituisci `192.168.1.42` con il **tuo** IP del passo 1. Lascia il
 resto invariato per ora — i default funzionano per la LAN.
 
-!!! warning "Se non aggiungi `192.168.x.y` ad `ALLOWED_ORIGINS`"
+!!! warning "Se non aggiungi `192.168.x.y` a `JARVIS_ALLOWED_ORIGINS`"
     Il browser farà partire la chiamata, ma la **risposta CORS**
     bloccherà tutto e vedrai un errore generico tipo *"Failed to fetch"*
     nella console. Aggiungerlo è obbligatorio.
+
+### Cambia le porte se sono già occupate
+
+Se sul tuo PC giri già un Postgres locale, Redis, Qdrant, oppure se la
+porta 8080 è in uso (capita con tool Java come JetBrains o servizi
+auto-deploy), `docker compose up` fallirà con `port is already
+allocated`. Sovrascrivi le porte host nel `.env`:
+
+```bash
+JARVIS_HOST_PORT=8090       # API server
+POSTGRES_HOST_PORT=15432
+REDIS_HOST_PORT=16379
+QDRANT_HOST_PORT=16333
+QDRANT_GRPC_HOST_PORT=16334
+```
+
+Aggiorna anche `JARVIS_PUBLIC_URL` e `JARVIS_ALLOWED_ORIGINS` con la
+nuova porta (`http://192.168.1.42:8090`).
+
+Per scoprire quali porte sono occupate:
+
+```bash
+ss -tlnp | grep -E '8080|5432|6379|6333'   # Linux
+lsof -iTCP -sTCP:LISTEN | grep -E '8080|5432'   # macOS
 
 ## 4 · Abilita la risoluzione `jarvis.local` (mDNS)
 
@@ -330,15 +355,21 @@ Dal PC host (o da qualsiasi client sulla LAN):
 ```bash
 curl -X POST http://192.168.1.42:8080/api/v1/auth/register \
      -H "Content-Type: application/json" \
-     -d '{"email":"tu@home.local","password":"<min-12-char-passphrase>","display_name":"Tu"}'
+     -d '{"email":"tu@example.com","password":"<min-12-char-passphrase>","display_name":"Tu"}'
 ```
+
+!!! warning "Email validation"
+    Il validator email rifiuta i TLD riservati come `.local`, `.test`,
+    `.localhost`. Usa `example.com`, un dominio reale che possiedi, o
+    un sotto-dominio della tua LAN se hai DNS interno (es. `tu@home.lan`
+    funziona se `.lan` è registrato come TLD interno).
 
 Risposta: `201 Created` con il profilo utente. Login:
 
 ```bash
 curl -X POST http://192.168.1.42:8080/api/v1/auth/login \
      -H "Content-Type: application/json" \
-     -d '{"email":"tu@home.local","password":"<min-12-char-passphrase>"}'
+     -d '{"email":"tu@example.com","password":"<min-12-char-passphrase>"}'
 ```
 
 Salva l'`access_token`, poi genera il QR di pairing per gli altri

@@ -19,7 +19,7 @@ verificato.
 ## Indice tematico
 
 - [Build & Docker](build-docker.md)
-- [Server runtime](server-runtime.md) (in arrivo)
+- [Avvio server runtime](server-runtime.md)
 - [Database / Alembic](database.md) (in arrivo)
 - [Identity, JWT, MFA](identity.md) (in arrivo)
 - [Memory & vector store](memory.md) (in arrivo)
