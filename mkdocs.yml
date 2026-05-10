@@ -272,6 +272,12 @@ nav:
       - troubleshooting/index.md
       - "Build & Docker": troubleshooting/build-docker.md
       - "Avvio server runtime": troubleshooting/server-runtime.md
+  - Operations:
+      - operations/index.md
+      - "Resource management": operations/resource-management.md
+      - "Profili deployment": operations/profiles.md
+      - "Observability stack": operations/observability.md
+      - "Sizing calculator": operations/sizing-calculator.md
   - Architettura:
       - architecture/index.md
       - "Runtime core (Fase 1)": architecture/core-runtime.md
