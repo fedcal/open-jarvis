@@ -116,7 +116,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Run Grype scan
-        uses: anchore/scan-action@v4
+        uses: anchore/scan-action@v7
         with:
           image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.determine-env.outputs.environment }}-latest
           fail-build: ${{ needs.determine-env.outputs.environment == 'production' }}
